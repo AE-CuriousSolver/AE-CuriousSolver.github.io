@@ -1,15 +1,14 @@
 # Homepage words. Edit the text here; the layout lives in _layouts/home.html.
 
 intro:
-  kicker: "Technical Consultant · System analysis and design · Backend engineering"
+  kicker: "Product Engineer & Technical Advisor | Architecture · Data · APIs | Backend engineering"
   heading: "Hi, I'm Anna-Marie."
   text: >-
-    I trained as a mechanical engineer, then spent four years building backend
+    I trained as a mechanical engineer, then spent almost four years building backend
     systems at Lloyds and Starling. Now I help people understand how their
     technology fits together, from what a product captures to what its users
     actually see. This page is the detail behind my CV: where I've worked, how
     I work and what I'm building.
-  status: "Open to remote contracts · AU/NZ time zones"
 
 # "count" makes the number count up when it scrolls into view; leave it out for text values
 metrics:
@@ -21,8 +20,9 @@ metrics:
     label: "UK banks: Starling and Lloyds"
   - value: "MEng"
     label: "Mechanical Engineering, Cardiff"
-  - value: "UK · EU"
-    label: "working rights"
+  - value: "2"
+    count: 2
+    label: "startups advised"
 
 how_i_work:
   eyebrow: "How I work"
@@ -49,30 +49,31 @@ experience:
   link_text: "See all experience"
   items:
     - name: "Take In"
-      meta: "Technical Consultant · Auckland · 2026"
+      meta: "Technical Consultant · Auckland · 2026 – present"
       points:
         - "Conducted a full project review across hardware, app, cloud and data"
+        - "Ran product vision workshops, turning the founders' ideas into a written North Star"
         - "Designed breath metrics end to end, from sensor to screen"
-        - "Helped the founders lead technical decisions with confidence"
       tags: ["Systems design", "Data design", "Advisory"]
+    - name: "Lyra"
+      meta: "Systems & Operations Advisor · Remote · 2026"
+      points:
+        - "Designed the startup's operating structure ahead of launch: Notion workspace, team workflows and an Attio CRM"
+        - "Advised the founder on tools, priorities, and what to delegate or hire for"
+        - "Replaced spreadsheets and separate task tools with one CRM and a clear deals pipeline"
+      tags: ["Operations design", "CRM setup", "Advisory"]
     - name: "Starling Bank"
       meta: "Software Engineer · London · 2021–2023"
       points:
         - "Designed Banking-as-a-Service onboarding APIs for partner clients"
-        - "Led the fraud rules engine redesign on a £143B platform"
+        - "Led the fraud rules engine redesign, cutting rule changes from ~2 weeks to instant, self-serve updates"
         - "Shaped requirements with clients, compliance and fraud investigators"
       tags: ["API design", "Fraud systems", "Java"]
-    - name: "Lloyds Banking Group"
-      meta: "Software Engineer · London · 2019–2020"
-      points:
-        - "Built fraud detection microservices alongside a legacy monolith"
-        - "Led backend work on a custom switch service"
-        - "Built a reusable data-mapping tool that cut manual work"
-      tags: ["Microservices", "Integrations", "Spring"]
 
 skills:
   eyebrow: "What I'm good at"
   heading: "Skills, sketched"
+  hint: "hover to read more"
   items:
     - sketch: api
       title: "APIs and integrations"
@@ -86,17 +87,14 @@ skills:
     - sketch: docs
       title: "Docs and diagrams"
       text: "So a team understands its own systems without needing me."
+    - sketch: ai
+      title: "AI-assisted delivery"
+      text: "Briefing, guiding and reviewing AI agents, so the product decisions stay mine and the build moves faster."
 
-looking_for:
-  eyebrow: "What I'm looking for"
-  statement: "Contract work shaping systems and data, where the technology and the people using it need to meet."
-  # Must appear word for word in the statement; it gets a highlighter mark
-  highlight: "technology and the people"
-  points:
-    - "Multi-month contracts shaping APIs, integrations and data systems"
-    - "Technical business analysis, growing toward solutions engineering"
-    - "Short reviews helping non-technical founders see the whole picture"
-    - "Remote work in AU/NZ time zones · UK and EU working rights"
+# Low-key line above "Get in touch" pointing to the Services page
+services_link:
+  lead: "Working with founders?"
+  text: "See how I help"
 
 contact:
   heading: "Get in touch"

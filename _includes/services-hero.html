@@ -1,0 +1,58 @@
+{%- comment -%}
+  Services hero: the first screen shows the title and question on the left with loose ideas
+  drifting around them. Scrolling down the page, more bubbles appear and they all come together
+  into one blueprint, with the answer on the right (assets/js/services-hero.js).
+  Without JavaScript it simply shows the finished picture, using the positions below.
+{%- endcomment -%}
+{%- assign h = site.data.services.hero -%}
+{%- assign xs = "300,610,150,760,160,745,330,590" | split: "," -%}
+{%- assign ys = "95,90,215,215,400,405,490,485" | split: "," -%}
+{%- assign ax = "392,510,340,560,340,560,405,504" | split: "," -%}
+{%- assign ay = "215,215,262,263,332,333,365,365" | split: "," -%}
+<section class="sv-hero" data-sv-scroll>
+  <div class="sv-stage wrap">
+    <div class="sv-lead">
+      <h1 class="sv-title">{{ h.title }}</h1>
+      <p class="sv-question">{{ h.question }}</p>
+    </div>
+    <svg class="sv-visual" viewBox="0 0 900 560" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="sv-visual-title">
+      <title id="sv-visual-title">Loose ideas ({% for b in h.bubbles %}{{ b.label }}{% unless forloop.last %}, {% endunless %}{% endfor %}) brought together into one {{ h.centre }}.</title>
+      <defs>
+        <!-- Same hand-drawn edge as #rough, but sized to the whole drawing so thin, flat lines aren't clipped -->
+        <filter id="rough-lines" filterUnits="userSpaceOnUse" x="-500" y="-500" width="4000" height="6000"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="2.4"/></filter>
+      </defs>
+      <g class="sv-lines">
+        {%- for b in h.bubbles %}
+        {%- assign i = forloop.index0 %}
+        <path class="sv-line" d="M{{ xs[i] }} {{ ys[i] }} L{{ ax[i] }} {{ ay[i] }}" pathLength="1" stroke="#127C80" stroke-width="2" fill="none" stroke-linecap="round" filter="url(#rough-lines)"/>
+        {%- endfor %}
+      </g>
+      <g class="sv-blueprint" transform="translate(450 290)">
+        <rect x="-110" y="-75" width="220" height="150" rx="14" fill="#E3F1F0" stroke="#127C80" stroke-width="2.5" filter="url(#rough)"/>
+        <g class="sv-blueprint-detail">
+          <path d="M-88 -75 V75 M-66 -75 V75 M-44 -75 V75 M-22 -75 V75 M0 -75 V75 M22 -75 V75 M44 -75 V75 M66 -75 V75 M88 -75 V75 M-110 -50 H110 M-110 -25 H110 M-110 0 H110 M-110 25 H110 M-110 50 H110" stroke="#127C80" stroke-opacity=".16" stroke-width="1"/>
+          <text x="0" y="-16" text-anchor="middle" font-size="34" fill="#EB6446">{{ h.centre }}</text>
+          <g fill="#FFFFFF" stroke="#1B2740" stroke-width="2" filter="url(#rough)">
+            <rect x="-84" y="14" width="40" height="28" rx="6"/>
+            <rect x="-20" y="14" width="40" height="28" rx="6"/>
+            <rect x="44" y="14" width="40" height="28" rx="6"/>
+          </g>
+          <path d="M-42 28 H-24 M-29 23 L-23 28 L-29 33 M22 28 H40 M35 23 L41 28 L35 33" stroke="#127C80" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </g>
+      </g>
+      <g class="sv-bubbles">
+        {%- for b in h.bubbles %}
+        {%- assign i = forloop.index0 %}
+        {%- assign tone = i | modulo: 3 %}
+        <g class="sv-bubble" transform="translate({{ xs[i] }} {{ ys[i] }})">
+          <g class="sv-bubble-in">
+            <circle r="42" fill="{% case tone %}{% when 0 %}#FDFCFA{% when 1 %}#FCE9E3{% else %}#E3F1F0{% endcase %}" stroke="{% case tone %}{% when 0 %}#1B2740{% when 1 %}#EB6446{% else %}#127C80{% endcase %}" stroke-width="2.2" filter="url(#rough)"/>
+            <text y="7" text-anchor="middle" font-size="22" fill="#1B2740">{{ b.label }}</text>
+          </g>
+        </g>
+        {%- endfor %}
+      </g>
+    </svg>
+    <p class="sv-answer">{{ h.answer }}</p>
+  </div>
+</section>

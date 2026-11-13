@@ -1,0 +1,19 @@
+{%- comment -%} Small hand-drawn icon for an About "How I work" card. Usage: {% include work-icon.html name="listen" %} {%- endcomment -%}
+<svg class="work-icon drawable" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+{%- case include.name -%}
+{%- when "listen" %}
+  <path class="sk" d="M9 8 H39 Q44 8 44 13 V27 Q44 32 39 32 H22 L13 40 V32 H9 Q4 32 4 27 V13 Q4 8 9 8 Z" stroke="#1B2740" stroke-width="2.5" style="--len:150"/>
+  <g class="lbl" fill="#EB6446" style="--d:.6s"><circle cx="15" cy="20" r="2.4"/><circle cx="24" cy="20" r="2.4"/><circle cx="33" cy="20" r="2.4"/></g>
+{%- when "end-to-end" %}
+  <circle class="sk" cx="8" cy="36" r="4.5" stroke="#1B2740" stroke-width="2.5" style="--len:40"/>
+  <path class="sk" d="M12 33 Q20 6 27 24 T38 12" stroke="#127C80" stroke-width="2.5" style="--len:70;--d:.3s"/>
+  <path class="sk" d="M31 9 L39 11 L37 19" stroke="#EB6446" stroke-width="2.5" style="--len:30;--d:.8s"/>
+{%- when "doing" %}
+  <path class="sk" d="M24 5 C14 5 10 12 10 18 C10 24 15 27 17 31 V35 H31 V31 C33 27 38 24 38 18 C38 12 34 5 24 5 Z" stroke="#1B2740" stroke-width="2.5" style="--len:120"/>
+  <path class="sk" d="M18 40 H30 M21 44 H27" stroke="#1B2740" stroke-width="2.5" style="--len:30;--d:.5s"/>
+  <path class="sk" d="M20 21 L24 16 L28 21" stroke="#EB6446" stroke-width="2.5" style="--len:20;--d:.7s"/>
+{%- when "honest" %}
+  <path class="sk" d="M24 6 V40 M15 42 H33 M8 13 H40" stroke="#1B2740" stroke-width="2.5" style="--len:100"/>
+  <path class="sk" d="M8 13 L3 26 H13 Z M40 13 L35 26 H45 Z" stroke="#127C80" stroke-width="2.5" style="--len:90;--d:.5s"/>
+{%- endcase %}
+</svg>

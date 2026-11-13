@@ -1,0 +1,131 @@
+---
+layout: default
+---
+{%- assign s = site.data.services -%}
+
+{% include services-hero.html %}
+
+<section class="wrap sv-section sv-section-first" aria-labelledby="help-heading">
+  <div class="board sv-help">
+    <h2 id="help-heading">{{ s.help.heading }}</h2>
+    <div class="help-grid">
+      {%- for item in s.help.items %}
+      <article class="help-tile">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.text }}</p>
+      </article>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="wrap sv-section sv-about" aria-label="About me">
+  <p class="hero-kicker">{{ s.kicker }}</p>
+  <p class="sv-intro">{{ s.intro }}</p>
+</section>
+
+<section class="wrap sv-section" aria-labelledby="work-heading">
+  <h2 id="work-heading">{{ s.how_i_work.heading }}</h2>
+  <ul class="work-lines">
+    {%- for item in s.how_i_work.items %}
+    <li><strong>{{ item.lead }}</strong> {{ item.text }}</li>
+    {%- endfor %}
+  </ul>
+</section>
+
+<section class="wrap sv-section sv-section-wide" aria-labelledby="offers-heading">
+  <h2 id="offers-heading">{{ s.services.heading }}</h2>
+  <p class="offer-note">{{ s.services.note }}</p>
+  <div class="offer-grid">
+    {%- for offer in s.services.items %}
+    <article class="card offer" id="{{ offer.id }}">
+      <h3>{{ offer.name }}</h3>
+      <p class="offer-price"><strong>{{ offer.price }}</strong> · {{ offer.duration }}</p>
+      <p class="offer-good-for">{{ offer.good_for }}</p>
+      <p>{{ offer.text }}</p>
+      {%- if offer.list %}
+      <div class="offer-list">
+        <p class="offer-list-heading">{{ offer.list_heading }}</p>
+        <ul>
+          {%- for point in offer.list %}
+          <li>{{ point }}</li>
+          {%- endfor %}
+        </ul>
+      </div>
+      {%- endif %}
+    </article>
+    {%- endfor %}
+  </div>
+</section>
+
+<section class="wrap sv-section" aria-labelledby="start-heading">
+  <div class="board sv-start">
+    <div class="flow">
+      <h2 id="start-heading" class="flow-start">{{ s.start.heading }}</h2>
+
+      <div class="flow-alt">
+        <div class="flow-alt-link" aria-hidden="true">
+          <span class="hand">{{ s.start.alt.if }}</span>
+          <svg class="drawable" viewBox="0 0 96 24" focusable="false">
+            <path class="sk" d="M2 12 H86 M77 5 L88 12 L77 19" stroke="#EB6446" stroke-width="2.5" style="--len:120;--d:.4s"/>
+          </svg>
+        </div>
+        <a class="flow-alt-box" href="#{{ s.start.alt.target }}">
+          <strong>{{ s.start.alt.title }}</strong>
+          <span>{{ s.start.alt.then }}</span>
+        </a>
+      </div>
+
+      <div class="flow-main">
+        <svg class="flow-branch drawable" viewBox="0 0 900 80" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <path class="sk" d="M450 0 C450 44 2 30 2 78 M450 0 C450 44 898 30 898 78" stroke="#1B2740" stroke-width="2" vector-effect="non-scaling-stroke" style="--len:900"/>
+        </svg>
+        <ol class="flow-steps">
+          {%- for step in s.start.flow %}
+          <li class="flow-step">
+            <p class="flow-if hand">{{ step.if }}</p>
+            <svg class="flow-arrow drawable" viewBox="0 0 24 44" aria-hidden="true" focusable="false">
+              <path class="sk" d="M12 2 Q9 20 12 38 M5 31 L12 40 L19 31" stroke="#EB6446" stroke-width="2.5" style="--len:70;--d:{{ forloop.index0 | times: 0.25 | plus: 0.6 }}s"/>
+            </svg>
+            <a class="flow-then" href="#{{ step.target }}">{{ step.then | markdownify | remove: '<p>' | remove: '</p>' | strip }}</a>
+          </li>
+          {%- endfor %}
+        </ol>
+      </div>
+    </div>
+    <p class="flow-after">{{ s.start.after }}</p>
+  </div>
+</section>
+
+<section class="wrap sv-section" aria-labelledby="selected-heading">
+  <h2 id="selected-heading">{{ s.selected_work.heading }}</h2>
+  <div class="case-grid">
+    {%- for item in s.selected_work.items %}
+    <article class="card case">
+      <div class="case-head">
+        {% include case-icon.html name=item.icon %}
+        <h3>{{ item.lead }}</h3>
+      </div>
+      <ol class="case-steps">
+        {%- for step in item.steps %}
+        <li>{{ step }}</li>
+        {%- endfor %}
+      </ol>
+    </article>
+    {%- endfor %}
+  </div>
+  <a class="more-link" href="{{ '/employment' | relative_url }}">{{ s.selected_work.link_text }} <span aria-hidden="true">→</span></a>
+</section>
+
+<section class="wrap sv-section" id="contact" aria-labelledby="contact-heading">
+  <div class="contact services-contact">
+    <h2 id="contact-heading">{{ s.contact.heading }}</h2>
+    <div class="ctas">
+      <a class="btn btn-light" href="{{ site.linkedin_url }}" target="_blank" rel="noopener">{{ s.contact.button }}</a>
+    </div>
+    <p class="services-contact-links"><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+  </div>
+</section>
+
+<script src="{{ '/assets/js/site.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+<script src="{{ '/assets/js/services-hero.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>

@@ -1,0 +1,12 @@
+{%- comment -%} Small hand-drawn icon for a "Selected work" card. Usage: {% include case-icon.html name="wearable" %} {%- endcomment -%}
+<svg class="case-icon drawable" viewBox="0 0 56 56" aria-hidden="true" focusable="false">
+{%- case include.name -%}
+{%- when "wearable" %}
+  <path class="sk" d="M20 4 H36 L38 14 M20 4 L18 14 M18 42 L20 52 H36 L38 42" stroke="#1B2740" stroke-width="2.5" style="--len:90"/>
+  <rect class="sk" x="12" y="14" width="32" height="28" rx="8" stroke="#1B2740" stroke-width="2.5" style="--len:130;--d:.3s"/>
+  <path class="sk" d="M17 29 H23 L26 22 L30 35 L33 28 H39" stroke="#EB6446" stroke-width="2.5" style="--len:60;--d:.7s"/>
+{%- when "fraud" %}
+  <path class="sk" d="M28 4 L46 11 V26 C46 38 38 47 28 52 C18 47 10 38 10 26 V11 Z" stroke="#1B2740" stroke-width="2.5" style="--len:150"/>
+  <path class="sk" d="M19 28 L26 35 L38 21" stroke="#127C80" stroke-width="3" style="--len:40;--d:.6s"/>
+{%- endcase %}
+</svg>

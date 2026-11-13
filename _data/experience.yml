@@ -28,7 +28,9 @@ type_labels:
 projects:
   heading: "Things I'm building"
   text: >-
-    Personal projects where I practise, experiment and rebuild my backend
-    fundamentals. They're working spaces, not finished products.
+    Projects where I practise, experiment and learn how to build and ship
+    with modern tools and AI agents. They're working spaces, not finished
+    products.
   link_text: "View on GitHub"
-  details: "Learnings and next steps"
+  details: "What I'm gaining"
+  stack_label: "Stack"

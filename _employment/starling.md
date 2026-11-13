@@ -7,7 +7,7 @@ sort_key: "2021-03"   # year-month, used to order roles newest first
 end_date: "September 2023"
 type: "technical"
 featured: true
-overview: "Backend engineer at a UK digital bank serving 3.6 million customers and processing over £143 billion in payments a year. I worked across two teams, Banking-as-a-Service (~6 engineers) and Financial Crime (~3 engineers), from design and delivery through to production support."
+overview: "Backend engineer at a UK digital bank serving 3.6 million customers and processing over £143 billion in payments a year. I worked across two teams, Banking-as-a-Service (~6 engineers) and Financial Crime (~30 engineers), from design and delivery through to production support."
 skills:
   - "Designed external onboarding APIs for Banking-as-a-Service partner clients"
   - "Scoped and designed the API template for the bank's SaaS offering"
@@ -18,7 +18,7 @@ skills:
 
 ## Responsibilities
 - Shaped onboarding API requirements directly with partner clients, product and compliance teams
-- Adapted onboarding and reverification flows for BaaS clients, aligning with core systems owned by other engineering teams
+- Adapted onboarding and re-verification flows for BaaS clients, aligning with core systems owned by other engineering teams
 - Wrote and maintained API documentation for client integrations, working with technical writers
 - Built transaction freezes to support urgent fraud investigations
 - Took part in incident response, releases and production support

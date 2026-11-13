@@ -7,7 +7,7 @@ sort_key: "2019-07"   # year-month, used to order roles newest first
 end_date: "October 2020"
 type: "technical"
 featured: true
-overview: "Backend engineer at one of the UK’s Big Four banks, in the Fraud and Auth Lab. I built fraud detection microservices and internal tools that connected newer services to a large legacy system."
+overview: "Backend engineer at one of the UK's Big Four banks, in the Fraud and Auth Lab. I built fraud detection microservices and internal tools that connected newer services to a large legacy system."
 skills:
   - "Built fraud detection microservices in a team of eight engineers, with a scrum master and product owner"
   - "Integrated three third-party fraud providers (including malware detection and behavioural monitoring) with the legacy monolith"
@@ -24,9 +24,9 @@ skills:
 
 ## Key contributions
 - Bridged modern microservices with existing enterprise infrastructure
-- Designed the switch service’s controls (parallel running, traffic proportions, on/off) so the new fraud engine could be tested safely before migration
+- Designed the switch service's controls (parallel running, traffic proportions, on/off) so the new fraud engine could be tested safely before migration
 - Spotted colleagues manually retyping data between formats, including one value mapping to several. Built a quick tool on my own initiative that turned this into a single run-and-paste step
-- Founded the Lloyds Wellbeing Hub, a space for informal check-ins and wellbeing resources
+- Founded the Lab's Wellbeing Hub and presented it at an all-hands: channels for activity groups, social events and mindfulness, for colleagues feeling disconnected
 
 ## What I gained
 - Working inside a large-scale, regulated enterprise system

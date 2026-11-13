@@ -9,11 +9,18 @@ layout: default
     <p class="page-description">{{ about.intro }}</p>
   </header>
 
-  <section class="about-summary prose" aria-labelledby="about-summary">
-    <h2 id="about-summary">{{ about.summary.heading }}</h2>
-    {%- for paragraph in about.summary.paragraphs %}
-    <p>{{ paragraph }}</p>
-    {%- endfor %}
+  <section class="about-intro" aria-labelledby="about-summary">
+    <div class="portrait about-portrait">
+      <div class="portrait-photo">
+        <img src="{{ '/assets/images/profile-640.jpg' | relative_url }}" alt="{{ site.author }}" width="640" height="640">
+      </div>
+    </div>
+    <div class="about-summary prose">
+      <h2 id="about-summary">{{ about.summary.heading }}</h2>
+      {%- for paragraph in about.summary.paragraphs %}
+      <p>{{ paragraph }}</p>
+      {%- endfor %}
+    </div>
   </section>
 
   <section class="about-section" aria-labelledby="about-work">
@@ -22,6 +29,7 @@ layout: default
       <div class="work-grid">
         {%- for item in about.how_i_work.items %}
         <article class="work-item">
+          {% include work-icon.html name=item.icon %}
           <h3>{{ item.title }}</h3>
           <p>{{ item.text }}</p>
         </article>
@@ -74,3 +82,5 @@ layout: default
 
   {{ content }}
 </div>
+
+<script src="{{ '/assets/js/site.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>

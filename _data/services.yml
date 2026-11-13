@@ -1,0 +1,141 @@
+# Services page words (final copy). The layout lives in _layouts/services.html.
+
+hero:
+  title: "Someone on your side"
+  question: "Know what you want to build, but not how to get there?"
+  answer: "From abstract ideas to buildable products"
+  # Bubbles drift around at the top of the page, then come together into the blueprint as you scroll.
+  # The first four (founders' frictions) are scattered on the first screen; the rest appear as you scroll.
+  # Keep it to eight: positions are set in assets/js/services-hero.js and _includes/services-hero.html.
+  bubbles:
+    - { label: "deadlines" }
+    - { label: "budget" }
+    - { label: "features" }
+    - { label: "tech" }
+    - { label: "vision" }
+    - { label: "team" }
+    - { label: "customers" }
+    - { label: "data" }
+  centre: "blueprint"
+
+# Shown after "How I can help"
+kicker: "Anna-Marie Edeleanu · Product Engineer & Technical Advisor"
+
+intro: >-
+  I spent almost four years as a backend engineer at Starling and Lloyds. Now I
+  sit between the vision and the build. I listen to the complexity: your goals,
+  constraints, conflicts and possibilities. I capture the objective, and turn
+  what's abstract into an explicit, buildable plan. One person from discovery to
+  build, so nothing gets lost in translation.
+
+help:
+  heading: "How I can help"
+  items:
+    - title: "Independent review of your tech"
+      text: "know what you've really got, what's missing and what's at risk."
+    - title: "Define your product vision"
+      text: "turn ideas in your head into something your team can build."
+    - title: "Advise on engineering strategy"
+      text: "make tech decisions that fit your plan, budget and timeline."
+    - title: "Find the time and money wasters"
+      text: "spot where work is slow, duplicated or misunderstood."
+    - title: "Build prototypes"
+      text: "get something real in front of users, fast."
+
+how_i_work:
+  heading: "How I work"
+  items:
+    - lead: "Listen first."
+      text: "How things work today, what you need, where the friction is, and where you want to go."
+    - lead: "Plain English and diagrams."
+      text: "So you can lead product and tech decisions with confidence."
+    - lead: "Honest about trade-offs."
+      text: "I lay out the options, consequences and constraints. I advise; you decide."
+    - lead: "Remote-first."
+      text: "Short, focused sessions with prep in between, on shared online boards. In person where location allows."
+
+services:
+  heading: "Services"
+  note: "Prices depend on complexity and team size"
+  items:
+    - name: "Product & Engineering Health Check"
+      id: "health-check"
+      price: "From A$2,000"
+      duration: "1–2 weeks"
+      good_for: "Good for: you've started building and want to know where you really stand."
+      text: >-
+        An independent look at what's been built, how it's being built, and how
+        it'll run once it's live, so you ship faster, spend less and avoid
+        surprises.
+      list_heading: "You get:"
+      list:
+        - "A system overview with plain-English explanations"
+        - "What's working well"
+        - "Gaps and risks, including communication and documentation"
+        - "Options and advice for next steps"
+        - "A build plan: the order of work and the skills needed"
+    - name: "Product Definition Sprint"
+      id: "sprint"
+      price: "From A$4,000"
+      duration: "2–3 weeks"
+      good_for: "Good for: the idea's clear in your head, but not yet on paper in a way a team can build."
+      text: >-
+        I listen, run discovery workshops, then hand over a Product Blueprint:
+        your vision, user flows and requirements in one place. Ready to build
+        something new, or to refresh a product that's outgrown its original plan.
+      list_heading: "Your Product Blueprint:"
+      list:
+        - "Vision and North Star"
+        - "User flows"
+        - "Product walkthrough"
+        - "Data design"
+        - "Prioritised requirements and MVP scope"
+    - name: "Fractional Product Partner"
+      id: "partner"
+      price: "From A$2,000/month"
+      duration: "around 2 days (16 hours)"
+      good_for: "Good for: you want someone on your side through the build."
+      text: >-
+        Part-time, ongoing support: checking delivery against the blueprint, a
+        sounding board for decisions, hands-on design and build work, and
+        workshops when direction shifts. Hours are used flexibly across calls,
+        reviews, build work and messages.
+
+# Markdown: **bold** is allowed in these lines
+# Drawn as a small flow chart on a whiteboard. "target" links to an offer card or the contact box.
+start:
+  heading: "Not sure where to start?"
+  flow:
+    - if: "If something's already built"
+      then: "start with a **Health Check**"
+      target: "health-check"
+    - if: "If the picture isn't clear yet"
+      then: "start with a **Sprint**"
+      target: "sprint"
+  # The "Or" option sits to the side, joined straight to the question
+  alt:
+    if: "Or"
+    title: "Let's figure it out together"
+    then: "book a free 30-minute intro call"
+    target: "contact"
+  after: "Tell me about your ideas, the friction and what you're looking for, and we'll go from there."
+
+# Each piece of work is a card; "steps" are shown in order, one per line.
+selected_work:
+  heading: "Selected work"
+  items:
+    - lead: "Wearable health-tech startup"
+      icon: "wearable"
+      steps:
+        - "Independent review across hardware, app, cloud and data, delivered as a clear report with realistic next steps."
+        - "Then captured the founders' vision as a written North Star and designed how data flows from sensor to screen."
+    - lead: "Starling Bank, fraud systems"
+      icon: "fraud"
+      steps:
+        - "The fraud team kept requesting one-off rules for each new scam."
+        - "I asked them to walk me through their investigations instead, then redesigned the rules engine so investigators could create and adjust rules themselves, with no engineers or releases needed."
+  link_text: "See my full experience"
+
+contact:
+  heading: "Let's talk"
+  button: "Message me on LinkedIn"

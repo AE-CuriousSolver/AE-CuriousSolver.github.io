@@ -10,12 +10,13 @@ layout: default
   <header class="page-header">
     <h1>{{ page.title }}</h1>
     <p class="page-description">{{ words.intro }}</p>
-    <nav class="jump-links" aria-label="On this page">
-      <a href="#technical">{{ words.technical.heading }}</a>
-      <a href="#beyond-tech">{{ words.beyond.heading }}</a>
-      <a href="#projects">{{ words.projects.heading }}</a>
-    </nav>
   </header>
+
+  <nav class="jump-links" aria-label="On this page">
+    <a href="#technical">{{ words.technical.heading }}</a>
+    <a href="#beyond-tech">{{ words.beyond.heading }}</a>
+    <a href="#projects">{{ words.projects.heading }}</a>
+  </nav>
 
   <section id="technical" class="exp-section" aria-labelledby="technical-heading">
     <h2 id="technical-heading">{{ words.technical.heading }}</h2>
@@ -63,7 +64,7 @@ layout: default
         <p class="role-meta">{% include employment-date-format.html item=role %}</p>
         <p class="beyond-overview">{{ role.overview }}</p>
         {%- if role.learnings %}
-        <details class="role-more">
+        <details class="role-more beyond-more">
           <summary>{{ words.beyond.gained }}</summary>
           <ul class="role-points">
             {%- for learning in role.learnings %}
@@ -82,32 +83,64 @@ layout: default
       <h2 id="projects-heading">{{ words.projects.heading }}</h2>
       <p class="section-intro">{{ words.projects.text }}</p>
       <div class="project-grid">
-        {%- for project in site.projects %}
+        {%- assign projects = site.projects | sort: "order" -%}
+        {%- for project in projects %}
+        {%- assign project_id = project.title | slugify | prepend: "project-" %}
         <article class="project">
-          <h3>{{ project.title }}</h3>
-          <p>{{ project.what }}</p>
-          <p class="project-purpose">{{ project.purpose }}</p>
-          <details class="role-more">
-            <summary>{{ words.projects.details }}</summary>
+          <header>
+            <h3>{{ project.title }}</h3>
+            {%- if project.key_stack %}
+            <p class="project-key-stack">{{ project.key_stack }}</p>
+            {%- endif %}
+          </header>
+          <p>{{ project.what | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+          <p class="project-purpose">{{ project.purpose | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+          <div class="project-foot">
+            <button type="button" class="project-open" data-dialog="{{ project_id }}" aria-haspopup="dialog">{{ words.projects.details }}</button>
+            {%- if project.github_link %}
+            <a class="more-link" href="{{ project.github_link }}" target="_blank" rel="noopener">{{ words.projects.link_text }} <span aria-hidden="true">→</span></a>
+            {%- endif %}
+          </div>
+        </article>
+
+        <dialog class="project-dialog" id="{{ project_id }}" aria-labelledby="{{ project_id }}-title">
+          <div class="project-dialog-inner">
+            <form method="dialog"><button class="dialog-close" aria-label="Close">×</button></form>
+            <header>
+              <h3 id="{{ project_id }}-title">{{ project.title }}</h3>
+              {%- if project.key_stack %}
+              <p class="project-key-stack">{{ project.key_stack }}</p>
+              {%- endif %}
+            </header>
+            <p>{{ project.what | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+            <p>{{ project.purpose | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
             <div class="role-detail">
+              {%- if project.stack %}
+              <h4>{{ words.projects.stack_label }}</h4>
+              <p>{{ project.stack }}</p>
+              {%- endif %}
+              {%- if project.how_it_works %}
+              <h4>How it works</h4>
+              <ul>{% for item in project.how_it_works %}<li>{{ item }}</li>{% endfor %}</ul>
+              {%- endif %}
               {%- if project.learnings %}
               <h4>Key learnings</h4>
               <ul>{% for item in project.learnings %}<li>{{ item }}</li>{% endfor %}</ul>
-              {%- endif %}
-              {%- if project.challenges %}
-              <h4>Challenges</h4>
-              <ul>{% for item in project.challenges %}<li>{{ item }}</li>{% endfor %}</ul>
               {%- endif %}
               {%- if project.futures %}
               <h4>What's next</h4>
               <ul>{% for item in project.futures %}<li>{{ item }}</li>{% endfor %}</ul>
               {%- endif %}
             </div>
-          </details>
-          <a class="more-link" href="{{ project.github_link }}" target="_blank" rel="noopener">{{ words.projects.link_text }} <span aria-hidden="true">→</span></a>
-        </article>
+            {%- if project.github_link %}
+            <a class="more-link" href="{{ project.github_link }}" target="_blank" rel="noopener">{{ words.projects.link_text }} <span aria-hidden="true">→</span></a>
+            {%- endif %}
+          </div>
+        </dialog>
         {%- endfor %}
       </div>
     </div>
   </section>
 </div>
+
+<script src="{{ '/assets/js/site.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>

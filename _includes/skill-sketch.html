@@ -1,13 +1,13 @@
-{%- comment -%} Small hand-drawn sketch for a skill card. Usage: {% include skill-sketch.html name="api" %} {%- endcomment -%}
+{%- comment -%} Small hand-drawn sketch for a skill card. Usage: {% include skill-sketch.html name="api" %}. Paths with class "mv" nudge by --dx/--dy while the card is hovered. {%- endcomment -%}
 <svg class="drawable" viewBox="0 0 200 96" aria-hidden="true" focusable="false">
 {%- case include.name -%}
 {%- when "api" %}
   <rect class="sk" x="10" y="28" width="56" height="40" rx="8" stroke="#1B2740" stroke-width="2.5" style="--len:220"/>
   <rect class="sk" x="134" y="28" width="56" height="40" rx="8" stroke="#1B2740" stroke-width="2.5" style="--len:220;--d:.3s"/>
-  <path class="sk" d="M72 40 H124 M116 33 L126 40 L116 47" stroke="#127C80" stroke-width="2.5" style="--len:90;--d:.7s"/>
-  <path class="sk" d="M128 58 H76 M84 51 L74 58 L84 65" stroke="#EB6446" stroke-width="2.5" style="--len:90;--d:1s"/>
+  <path class="sk mv" d="M72 40 H124 M116 33 L126 40 L116 47" stroke="#127C80" stroke-width="2.5" style="--len:90;--d:.7s;--dx:5px"/>
+  <path class="sk mv" d="M128 58 H76 M84 51 L74 58 L84 65" stroke="#EB6446" stroke-width="2.5" style="--len:90;--d:1s;--dx:-5px"/>
 {%- when "systems" %}
-  <circle class="sk" cx="100" cy="22" r="14" stroke="#EB6446" stroke-width="2.5" style="--len:100"/>
+  <circle class="sk mv" cx="100" cy="22" r="14" stroke="#EB6446" stroke-width="2.5" style="--len:100;--dy:-3px"/>
   <rect class="sk" x="20" y="62" width="44" height="26" rx="6" stroke="#1B2740" stroke-width="2.5" style="--len:150;--d:.3s"/>
   <rect class="sk" x="78" y="62" width="44" height="26" rx="6" stroke="#1B2740" stroke-width="2.5" style="--len:150;--d:.45s"/>
   <rect class="sk" x="136" y="62" width="44" height="26" rx="6" stroke="#1B2740" stroke-width="2.5" style="--len:150;--d:.6s"/>
@@ -15,10 +15,19 @@
 {%- when "data" %}
   <path class="sk" d="M30 86 H180 M30 86 V10" stroke="#1B2740" stroke-width="2.5" style="--len:240"/>
   <path class="sk" d="M50 86 V60 M80 86 V44 M110 86 V52 M140 86 V26" stroke="#127C80" stroke-width="9" style="--len:200;--d:.4s"/>
-  <path class="sk" d="M44 54 Q90 30 150 18" stroke="#EB6446" stroke-width="2.5" style="--len:140;--d:1s"/>
+  <path class="sk mv" d="M44 54 Q90 30 150 18" stroke="#EB6446" stroke-width="2.5" style="--len:140;--d:1s;--dy:-4px"/>
 {%- when "docs" %}
   <path class="sk" d="M62 8 H124 L142 26 V90 H62 Z M124 8 V26 H142" stroke="#1B2740" stroke-width="2.5" style="--len:330"/>
   <path class="sk" d="M76 42 H128 M76 56 H128 M76 70 H110" stroke="#127C80" stroke-width="2.5" style="--len:150;--d:.6s"/>
-  <path class="sk" d="M150 30 Q170 22 176 38" stroke="#EB6446" stroke-width="2.5" style="--len:60;--d:1s"/>
+  <path class="sk mv" d="M150 30 Q170 22 176 38" stroke="#EB6446" stroke-width="2.5" style="--len:60;--d:1s;--dx:4px"/>
+{%- when "ai" %}
+  <path class="sk" d="M12 18 H50 L60 28 V80 H12 Z M50 18 V28 H60" stroke="#1B2740" stroke-width="2.5" style="--len:260"/>
+  <path class="sk" d="M22 44 H50 M22 56 H50 M22 68 H40" stroke="#127C80" stroke-width="2.5" style="--len:90;--d:.3s"/>
+  <path class="sk mv" d="M66 49 H82 M75 42 L84 49 L75 56" stroke="#127C80" stroke-width="2.5" style="--len:50;--d:.6s;--dx:4px"/>
+  <rect class="sk" x="88" y="28" width="48" height="42" rx="10" stroke="#1B2740" stroke-width="2.5" style="--len:190;--d:.8s"/>
+  <path class="sk" d="M102 46 V50 M122 46 V50 M104 60 Q112 64 120 60 M112 28 V20" stroke="#1B2740" stroke-width="2.5" style="--len:60;--d:1s"/>
+  <path class="sk mv" d="M142 49 H158 M151 42 L160 49 L151 56" stroke="#127C80" stroke-width="2.5" style="--len:50;--d:1.2s;--dx:4px"/>
+  <circle class="sk" cx="178" cy="49" r="16" stroke="#EB6446" stroke-width="2.5" style="--len:110;--d:1.4s"/>
+  <path class="sk" d="M170 49 L176 56 L187 42" stroke="#EB6446" stroke-width="3" style="--len:40;--d:1.6s"/>
 {%- endcase %}
 </svg>
