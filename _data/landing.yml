@@ -1,0 +1,12 @@
+# The root page (/): the only place both sides meet. Not shared anywhere and hidden from search
+# engines; it's there for anyone who trims the address back to the bare domain.
+# Name and title come from _config.yml (author, job_title).
+heading: "How can I help?"
+# Each door: a quiet question for anyone who's unsure, an arrow, then the card people click.
+doors:
+  - question: "Recruiter, or interested in my background?"
+    card: "My Experience"
+    url: "/profile/"
+  - question: "Founder looking for answers?"
+    card: "My Services"
+    url: "/services/"

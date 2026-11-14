@@ -1,0 +1,42 @@
+---
+layout: base
+body_class: landing-page
+---
+{%- comment -%}
+  Root page (/): my name and title, "How can I help?", then two doors. Each door is a quiet
+  question with an arrow down to the card people click. Words in _data/landing.yml.
+{%- endcomment -%}
+{%- assign l = site.data.landing -%}
+<main id="main" class="landing wrap">
+  <header class="landing-head">
+    <h1 class="landing-name">{{ site.author }}</h1>
+    <p class="landing-title">{{ site.job_title }}</p>
+  </header>
+  <section class="landing-choose" aria-labelledby="landing-heading">
+    <h2 class="landing-heading" id="landing-heading">{{ l.heading }}</h2>
+    <ul class="landing-doors">
+      {%- for door in l.doors %}
+      <li class="landing-door">
+        {%- comment -%}
+          The question floats at the outer top corner with a curved arrow down onto its card.
+          On narrower screens it sits above the card with a straight arrow.
+        {%- endcomment %}
+        <div class="landing-q">
+          <p class="landing-question hand">{{ door.question }}</p>
+          <svg class="landing-arrow drawable" viewBox="0 0 24 52" aria-hidden="true" focusable="false">
+            <path class="sk" d="M12 2 Q8 24 12 46 M5 38 L12 48 L19 38" stroke="#EB6446" stroke-width="2.5" style="--len:80;--d:{{ forloop.index0 | times: 0.3 | plus: 0.3 }}s"/>
+          </svg>
+          <svg class="landing-curve drawable" viewBox="0 0 80 56" aria-hidden="true" focusable="false">
+            <path class="sk" d="M6 6 C40 2 62 14 64 48 M56 39 L64 51 L72 40" stroke="#EB6446" stroke-width="2.5" style="--len:140;--d:{{ forloop.index0 | times: 0.3 | plus: 0.3 }}s"/>
+          </svg>
+        </div>
+        <a class="landing-card" href="{{ door.url | relative_url }}">
+          <span>{{ door.card }}</span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+  </section>
+</main>
+
+<script src="{{ '/assets/js/site.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>

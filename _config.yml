@@ -4,8 +4,10 @@ description: >-
   Experience, skills and projects of Anna-Marie Edeleanu, a product engineer and
   technical advisor with a background in backend engineering at Starling and Lloyds.
 url: "https://AE-CuriousSolver.github.io"
-baseurl: "/profile"
+baseurl: ""
 permalink: /:basename
+# Entry points: /profile/... (jobs, recruiters, mentors), /services/ (founders) and / (the "How can I help?" page).
+# Each page sets its own permalink in its front matter.
 author: "Anna-Marie Edeleanu"
 email: "anna.edeleanu@gmail.com"
 job_title: "Product Engineer & Technical Advisor"
@@ -14,7 +16,7 @@ degree: "MEng Mechanical Engineering - Cardiff University"
 # Links
 linkedin_url: "https://www.linkedin.com/in/anna-marie-edeleanu-6b21b1142"
 github_url: "https://github.com/AE-CuriousSolver"
-cv_file: "/assets/files/Anna-Marie-Edeleanu-CV.pdf"
+cv_file: "/profile/assets/files/Anna-Marie-Edeleanu-CV.pdf"
 
 # Theme (layouts are all overridden; kept so GitHub Pages does not fall back to its default theme)
 theme: minima
@@ -45,4 +47,5 @@ exclude:
   - setup.sh
   - Gemfile
   - Gemfile.lock
+  - _notes
 

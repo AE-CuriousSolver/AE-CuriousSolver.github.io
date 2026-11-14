@@ -1,34 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Figtree:wght@400;500;600&family=Caveat:wght@500;600&display=swap">
-  <link rel="icon" href="{{ '/assets/images/favicon.svg' | relative_url }}" type="image/svg+xml">
-  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}?v={{ site.time | date: '%s' }}">
-  {% seo %}
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <!-- Shared filter that gives whiteboard sketches a hand-drawn edge -->
-  <svg class="svg-defs" aria-hidden="true" focusable="false">
-    <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="2.4"/></filter>
-  </svg>
-
+---
+layout: base
+---
+{%- comment -%}
+  Profile shell (/profile/...): menu with About, Experience and the CV; footer with email,
+  LinkedIn and GitHub. Nothing here links to Services.
+{%- endcomment -%}
   <header class="site-nav">
     <div class="wrap">
-      <a class="brand" href="{{ '/' | relative_url }}">
+      <a class="brand" href="{{ '/profile/' | relative_url }}">
         <span class="brand-dot" aria-hidden="true"></span>
         <span>Anna-Marie<span class="brand-surname"> Edeleanu</span></span>
       </a>
       <nav aria-label="Main">
         <ul>
-          <li><a href="{{ '/about' | relative_url }}"{% if page.url contains 'about' %} aria-current="page"{% endif %}>About</a></li>
-          <li><a href="{{ '/employment' | relative_url }}"{% if page.url contains 'employment' %} aria-current="page"{% endif %}>Experience</a></li>
-          <li><a href="{{ '/services' | relative_url }}"{% if page.url contains 'services' %} aria-current="page"{% endif %}>Services</a></li>
+          <li><a href="{{ '/profile/about' | relative_url }}"{% if page.url contains '/about' %} aria-current="page"{% endif %}>About</a></li>
+          <li><a href="{{ '/profile/employment' | relative_url }}"{% if page.url contains '/employment' %} aria-current="page"{% endif %}>Experience</a></li>
         </ul>
       </nav>
       <a class="btn btn-small" href="{{ site.cv_file | relative_url | uri_escape }}">CV</a>
@@ -49,5 +35,3 @@
       </ul>
     </div>
   </footer>
-</body>
-</html>

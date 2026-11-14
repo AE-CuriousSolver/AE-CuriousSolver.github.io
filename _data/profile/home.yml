@@ -1,0 +1,48 @@
+# Profile homepage (/profile/): words only used here. Layout: _layouts/home.html.
+# The intro is in _data/shared/about_me.yml, "How I work" in _data/shared/how_i_work.yml
+# and the skills in _data/shared/skills.yml.
+
+# "count" makes the number count up when it scrolls into view; leave it out for text values
+metrics:
+  - value: "4"
+    count: 4
+    label: "years in software engineering"
+  - value: "2"
+    count: 2
+    label: "UK banks: Starling and Lloyds"
+  - value: "MEng"
+    label: "Mechanical Engineering, Cardiff"
+  - value: "2"
+    count: 2
+    label: "startups advised"
+
+experience:
+  eyebrow: "Experience highlights"
+  heading: "Recent experience"
+  link_text: "See all experience"
+  items:
+    - name: "Take In"
+      meta: "Technical Consultant · Auckland · 2026 – present"
+      points:
+        - "Conducted a full project review across hardware, app, cloud and data"
+        - "Ran product vision workshops, turning the founders' ideas into a written North Star"
+        - "Designed breath metrics end to end, from sensor to screen"
+      tags: ["Systems design", "Data design", "Advisory"]
+    - name: "Lyra"
+      meta: "Systems & Operations Advisor · Remote · 2026"
+      points:
+        - "Designed the startup's operating structure ahead of launch: Notion workspace, team workflows and an Attio CRM"
+        - "Advised the founder on tools, priorities, and what to delegate or hire for"
+        - "Replaced spreadsheets and separate task tools with one CRM and a clear deals pipeline"
+      tags: ["Operations design", "CRM setup", "Advisory"]
+    - name: "Starling Bank"
+      meta: "Software Engineer · London · 2021–2023"
+      points:
+        - "Designed Banking-as-a-Service onboarding APIs for partner clients"
+        - "Led the fraud rules engine redesign, cutting rule changes from ~2 weeks to instant, self-serve updates"
+        - "Shaped requirements with clients, compliance and fraud investigators"
+      tags: ["API design", "Fraud systems", "Java"]
+
+contact:
+  heading: "Get in touch"
+  text: "Happy to talk about a role, a project or anything on this page."

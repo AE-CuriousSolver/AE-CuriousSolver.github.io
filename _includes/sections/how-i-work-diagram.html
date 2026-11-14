@@ -1,4 +1,5 @@
-{%- assign d = site.data.home.how_i_work.diagram -%}
+{%- comment -%} The You / Me / Your tech diagram (wide and tall versions). Labels come from the include's labels= parameter. {%- endcomment -%}
+{%- assign d = include.labels -%}
 <svg class="diagram diagram-wide drawable" viewBox="0 0 820 230" role="img" aria-labelledby="hiw-title hiw-desc">
   <title id="hiw-title">You, me and your tech</title>
   <desc id="hiw-desc">You, on the left, and your tech, on the right, with me in the middle translating what you need and what's possible in both directions.</desc>

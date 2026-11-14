@@ -1,0 +1,63 @@
+# "How I work": the three versions, side by side.
+# profile_home  = whiteboard diagram, "Translating between people and technology" (/profile/)
+# profile_about = four cards with icons (/profile/about)
+# services      = four short lines (/services/)
+# Cards and lines both use title + text, so either style can show either version
+# (see _includes/sections/how-i-work-cards.html and how-i-work-lines.html).
+
+profile_home:
+  eyebrow: "How I work"
+  heading: "Translating between people and technology"
+  aside: "and I'm on your side"
+  text: >-
+    I listen first, then explain with diagrams, analogies and plain English, so
+    you understand your own systems well enough to decide with confidence.
+  # Handwritten labels on the diagram; keep each to about 3 words
+  diagram:
+    left: "You"
+    left_subtitle: "people · teams"
+    middle: "Me"
+    right: "Your tech"
+    right_subtitle: "APIs · data · cloud"
+    you_to_me: "what you need"
+    me_to_you: "plain English"
+    me_to_tech: "clear specs"
+    tech_to_me: "what's possible"
+
+profile_about:
+  heading: "How I work"
+  # icon: listen, end-to-end, doing or honest (small sketches in _includes/work-icon.html)
+  items:
+    - title: "Listening first"
+      icon: listen
+      text: >-
+        I start by asking how things work today and what people actually need,
+        before suggesting anything. Most problems look different once you've
+        heard from everyone involved.
+    - title: "Following it end to end"
+      icon: end-to-end
+      text: >-
+        I follow a system across teams and tools to find where the friction
+        really sits, rather than fixing one piece in isolation.
+    - title: "Learning by doing"
+      icon: doing
+      text: >-
+        I pick up unfamiliar tools and domains quickly by getting hands-on and
+        iterating until I understand how they work underneath.
+    - title: "Honest and realistic"
+      icon: honest
+      text: >-
+        I say plainly what's done, what's missing and what a change will really
+        cost, so decisions rest on an accurate picture.
+
+services:
+  heading: "How I work"
+  items:
+    - title: "Listen first."
+      text: "How things work today, what you need, where the friction is, and where you want to go."
+    - title: "Plain English and diagrams."
+      text: "So you can lead product and tech decisions with confidence."
+    - title: "Honest about trade-offs."
+      text: "I lay out the options, consequences and constraints. I advise; you decide."
+    - title: "Remote-first."
+      text: "Short, focused sessions with prep in between, on shared online boards. In person where location allows."

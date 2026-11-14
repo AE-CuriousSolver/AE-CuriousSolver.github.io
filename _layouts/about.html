@@ -1,59 +1,29 @@
 ---
 layout: default
 ---
-{%- assign about = site.data.about -%}
+{%- comment -%}
+  About page (/profile/about). Shared sections come from _includes/sections/ and _data/shared/;
+  "Applied experience" is only here (_data/profile/about.yml).
+{%- endcomment -%}
+{%- assign me = site.data.shared.about_me.profile_about -%}
+{%- assign about = site.data.profile.about -%}
 
 <div class="wrap page">
   <header class="page-header">
     <h1>{{ page.title }}</h1>
-    <p class="page-description">{{ about.intro }}</p>
+    <p class="page-description">{{ me.intro }}</p>
   </header>
 
-  <section class="about-intro" aria-labelledby="about-summary">
-    <div class="portrait about-portrait">
-      <div class="portrait-photo">
-        <img src="{{ '/assets/images/profile-640.jpg' | relative_url }}" alt="{{ site.author }}" width="640" height="640">
-      </div>
-    </div>
-    <div class="about-summary prose">
-      <h2 id="about-summary">{{ about.summary.heading }}</h2>
-      {%- for paragraph in about.summary.paragraphs %}
-      <p>{{ paragraph }}</p>
-      {%- endfor %}
-    </div>
+  <section aria-labelledby="about-summary">
+    {% include sections/about-me.html data=me.summary id="about-summary" %}
   </section>
 
   <section class="about-section" aria-labelledby="about-work">
-    <div class="board">
-      <h2 id="about-work">{{ about.how_i_work.heading }}</h2>
-      <div class="work-grid">
-        {%- for item in about.how_i_work.items %}
-        <article class="work-item">
-          {% include work-icon.html name=item.icon %}
-          <h3>{{ item.title }}</h3>
-          <p>{{ item.text }}</p>
-        </article>
-        {%- endfor %}
-      </div>
-    </div>
+    {% include sections/how-i-work-cards.html data=site.data.shared.how_i_work.profile_about id="about-work" %}
   </section>
 
   <section class="about-section" aria-labelledby="about-toolkit">
-    <h2 id="about-toolkit">{{ about.toolkit.heading }}</h2>
-    <dl class="toolkit">
-      {%- for group in about.toolkit.groups %}
-      <div>
-        <dt>{{ group.label }}</dt>
-        <dd>
-          <ul class="chips">
-            {%- for tool in group.items %}
-            <li>{{ tool }}</li>
-            {%- endfor %}
-          </ul>
-        </dd>
-      </div>
-      {%- endfor %}
-    </dl>
+    {% include sections/toolkit.html data=site.data.shared.toolkit id="about-toolkit" %}
   </section>
 
   <section class="about-section" aria-labelledby="about-applied">
@@ -69,15 +39,7 @@ layout: default
   </section>
 
   <section class="about-section about-outside" aria-labelledby="about-outside">
-    <div class="outside-head">
-      <h2 id="about-outside">{{ about.outside.heading }}</h2>
-      <p class="hand outside-note" aria-hidden="true">{{ about.outside.note }}</p>
-    </div>
-    <div class="prose">
-      {%- for paragraph in about.outside.paragraphs %}
-      <p>{{ paragraph }}</p>
-      {%- endfor %}
-    </div>
+    {% include sections/outside.html data=site.data.shared.outside id="about-outside" %}
   </section>
 
   {{ content }}

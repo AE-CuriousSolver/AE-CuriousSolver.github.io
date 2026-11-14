@@ -1,0 +1,67 @@
+{%- comment -%}
+  "Things I'm building": project cards on a whiteboard. "What I'm gaining" opens a pop-up.
+  Section words come from the data= parameter; the projects themselves from _projects/.
+  Usage: {% include sections/projects.html data=site.data.shared.projects id="projects-heading" %}
+{%- endcomment -%}
+{%- assign d = include.data -%}
+<div class="board">
+  <h2 id="{{ include.id }}">{{ d.heading }}</h2>
+  <p class="section-intro">{{ d.text }}</p>
+  <div class="project-grid">
+    {%- assign projects = site.projects | sort: "order" -%}
+    {%- for project in projects %}
+    {%- assign project_id = project.title | slugify | prepend: "project-" %}
+    <article class="project">
+      <header>
+        <h3>{{ project.title }}</h3>
+        {%- if project.key_stack %}
+        <p class="project-key-stack">{{ project.key_stack }}</p>
+        {%- endif %}
+      </header>
+      <p>{{ project.what | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+      <p class="project-purpose">{{ project.purpose | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+      <div class="project-foot">
+        <button type="button" class="project-open" data-dialog="{{ project_id }}" aria-haspopup="dialog">{{ d.details }}</button>
+        {%- if project.github_link %}
+        <a class="more-link" href="{{ project.github_link }}" target="_blank" rel="noopener">{{ d.link_text }} <span aria-hidden="true">→</span></a>
+        {%- endif %}
+      </div>
+    </article>
+
+    <dialog class="project-dialog" id="{{ project_id }}" aria-labelledby="{{ project_id }}-title">
+      <div class="project-dialog-inner">
+        <form method="dialog"><button class="dialog-close" aria-label="Close">×</button></form>
+        <header>
+          <h3 id="{{ project_id }}-title">{{ project.title }}</h3>
+          {%- if project.key_stack %}
+          <p class="project-key-stack">{{ project.key_stack }}</p>
+          {%- endif %}
+        </header>
+        <p>{{ project.what | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+        <p>{{ project.purpose | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+        <div class="role-detail">
+          {%- if project.stack %}
+          <h4>{{ d.stack_label }}</h4>
+          <p>{{ project.stack }}</p>
+          {%- endif %}
+          {%- if project.how_it_works %}
+          <h4>How it works</h4>
+          <ul>{% for item in project.how_it_works %}<li>{{ item }}</li>{% endfor %}</ul>
+          {%- endif %}
+          {%- if project.learnings %}
+          <h4>Key learnings</h4>
+          <ul>{% for item in project.learnings %}<li>{{ item }}</li>{% endfor %}</ul>
+          {%- endif %}
+          {%- if project.futures %}
+          <h4>What's next</h4>
+          <ul>{% for item in project.futures %}<li>{{ item }}</li>{% endfor %}</ul>
+          {%- endif %}
+        </div>
+        {%- if project.github_link %}
+        <a class="more-link" href="{{ project.github_link }}" target="_blank" rel="noopener">{{ d.link_text }} <span aria-hidden="true">→</span></a>
+        {%- endif %}
+      </div>
+    </dialog>
+    {%- endfor %}
+  </div>
+</div>

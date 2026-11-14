@@ -1,20 +1,25 @@
 ---
 layout: default
 ---
-{%- assign home = site.data.home -%}
+{%- comment -%}
+  Profile homepage (/profile/). The intro comes from _data/shared/about_me.yml, "How I work" and
+  the skills from _data/shared/; metrics, experience highlights and contact from _data/profile/home.yml.
+{%- endcomment -%}
+{%- assign home = site.data.profile.home -%}
+{%- assign intro = site.data.shared.about_me.profile_home -%}
 
 
 <section class="hero wrap">
   <div class="hero-text">
-    <p class="hero-kicker">{{ home.intro.kicker }}</p>
-    <h1>{{ home.intro.heading }}</h1>
-    <p class="hero-lede">{{ home.intro.text }}</p>
+    <p class="hero-kicker">{{ intro.kicker }}</p>
+    <h1>{{ intro.heading }}</h1>
+    <p class="hero-lede">{{ intro.text }}</p>
     <div class="ctas">
-      <a class="btn btn-solid" href="{{ '/employment' | relative_url }}">View my experience</a>
+      <a class="btn btn-solid" href="{{ '/profile/employment' | relative_url }}">View my experience</a>
       <a class="btn" href="{{ site.cv_file | relative_url | uri_escape }}">Download CV</a>
     </div>
-    {%- if home.intro.status %}
-    <p class="status"><span class="status-dot" aria-hidden="true"></span>{{ home.intro.status }}</p>
+    {%- if intro.status %}
+    <p class="status"><span class="status-dot" aria-hidden="true"></span>{{ intro.status }}</p>
     {%- endif %}
   </div>
   <div class="portrait">
@@ -37,17 +42,7 @@ layout: default
 </section>
 
 <section class="home-section wrap" id="how-i-work">
-  <div class="board">
-    <div class="board-head">
-      <div>
-        <p class="eyebrow">{{ home.how_i_work.eyebrow }}</p>
-        <h2>{{ home.how_i_work.heading }}</h2>
-      </div>
-      <p class="hand board-aside">{{ home.how_i_work.aside }}</p>
-    </div>
-    {% include how-i-work-diagram.html %}
-    <p class="board-text">{{ home.how_i_work.text }}</p>
-  </div>
+  {% include sections/how-i-work-board.html data=site.data.shared.how_i_work.profile_home %}
 </section>
 
 <section class="home-section wrap" id="experience">
@@ -71,31 +66,12 @@ layout: default
     </article>
     {%- endfor %}
   </div>
-  <a class="more-link" href="{{ '/employment' | relative_url }}">{{ home.experience.link_text }} <span aria-hidden="true">→</span></a>
+  <a class="more-link" href="{{ '/profile/employment' | relative_url }}">{{ home.experience.link_text }} <span aria-hidden="true">→</span></a>
 </section>
 
 <section class="home-section wrap" id="skills">
-  <div class="board">
-    <div class="board-head">
-      <div>
-        <p class="eyebrow">{{ home.skills.eyebrow }}</p>
-        <h2>{{ home.skills.heading }}</h2>
-      </div>
-      <p class="hand board-aside skills-hint" aria-hidden="true">{{ home.skills.hint }}</p>
-    </div>
-    <div class="skills">
-      {%- for skill in home.skills.items %}
-      <article class="skill" tabindex="0">
-        {% include skill-sketch.html name=skill.sketch %}
-        <h3>{{ skill.title }}</h3>
-        <p>{{ skill.text }}</p>
-      </article>
-      {%- endfor %}
-    </div>
-  </div>
+  {% include sections/skills.html data=site.data.shared.skills %}
 </section>
-
-<p class="wrap services-nudge">{{ home.services_link.lead }} <a href="{{ '/services' | relative_url }}">{{ home.services_link.text }} <span aria-hidden="true">→</span></a></p>
 
 <section class="home-section wrap" id="contact">
   <div class="contact">

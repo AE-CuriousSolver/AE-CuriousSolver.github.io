@@ -1,0 +1,24 @@
+# About page (/profile/about): words only used here. Layout: _layouts/about.html.
+# The intro and "About me" are in _data/shared/about_me.yml; "How I work", toolkit and
+# outside of tech are in _data/shared/.
+
+applied:
+  heading: "Applied experience"
+  items:
+    - title: "AI chatbot testing and training"
+      text: >-
+        Tested and trained a customer-facing AI chatbot across several versions,
+        finding where it failed and improving its answers through structured
+        feedback.
+    - title: "CRM setup for a startup"
+      text: >-
+        Set up a CRM from scratch, designing the sales pipeline and process
+        structure and connecting it with email and contacts.
+    - title: "Workflow automation"
+      text: >-
+        Built lightweight automations, from Google Sheets scripts to AI-assisted
+        workflows, to cut out repetitive manual work.
+    - title: "Documentation and onboarding"
+      text: >-
+        Turned unwritten team knowledge into onboarding guides and process docs,
+        so new staff could work independently sooner.

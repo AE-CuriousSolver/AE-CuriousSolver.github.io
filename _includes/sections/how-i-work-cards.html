@@ -1,0 +1,20 @@
+{%- comment -%}
+  "How I work" as cards on a whiteboard, each with a small icon (if the item has one).
+  Works with any version that has items with title + text.
+  Usage: {% include sections/how-i-work-cards.html data=site.data.shared.how_i_work.profile_about id="about-work" %}
+{%- endcomment -%}
+{%- assign d = include.data -%}
+<div class="board">
+  <h2 id="{{ include.id }}">{{ d.heading }}</h2>
+  <div class="work-grid">
+    {%- for item in d.items %}
+    <article class="work-item">
+      {%- if item.icon %}
+      {% include work-icon.html name=item.icon %}
+      {%- endif %}
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.text }}</p>
+    </article>
+    {%- endfor %}
+  </div>
+</div>

@@ -1,0 +1,20 @@
+{%- comment -%}
+  Toolkit: groups of tools as chips.
+  Usage: {% include sections/toolkit.html data=site.data.shared.toolkit id="about-toolkit" %}
+{%- endcomment -%}
+{%- assign d = include.data -%}
+<h2 id="{{ include.id }}">{{ d.heading }}</h2>
+<dl class="toolkit">
+  {%- for group in d.groups %}
+  <div>
+    <dt>{{ group.label }}</dt>
+    <dd>
+      <ul class="chips">
+        {%- for tool in group.items %}
+        <li>{{ tool }}</li>
+        {%- endfor %}
+      </ul>
+    </dd>
+  </div>
+  {%- endfor %}
+</dl>

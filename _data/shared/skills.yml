@@ -1,0 +1,21 @@
+# "What I'm good at: Skills, sketched". Shown on /profile/ (_includes/sections/skills.html).
+
+eyebrow: "What I'm good at"
+heading: "Skills, sketched"
+hint: "hover to read more"
+items:
+  - sketch: api
+    title: "APIs and integrations"
+    text: "Clear contracts between systems, so every partner knows what to expect."
+  - sketch: systems
+    title: "System design"
+    text: "From the big picture down to the edge cases that break things."
+  - sketch: data
+    title: "Data that makes sense"
+    text: "From capture to calculation to what people see, with assumptions written down."
+  - sketch: docs
+    title: "Docs and diagrams"
+    text: "So a team understands its own systems without needing me."
+  - sketch: ai
+    title: "AI-assisted delivery"
+    text: "Briefing, guiding and reviewing AI agents, so the product decisions stay mine and the build moves faster."

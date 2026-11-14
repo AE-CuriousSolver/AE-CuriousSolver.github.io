@@ -1,0 +1,11 @@
+# "Things I'm building": section words. The projects themselves live in _projects/.
+# Shown on /profile/employment (_includes/sections/projects.html).
+
+heading: "Things I'm building"
+text: >-
+  Projects where I practise, experiment and learn how to build and ship
+  with modern tools and AI agents. They're working spaces, not finished
+  products.
+link_text: "View on GitHub"
+details: "What I'm gaining"
+stack_label: "Stack"

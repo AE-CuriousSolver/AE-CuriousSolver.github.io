@@ -1,7 +1,12 @@
 ---
-layout: default
+layout: services-shell
 ---
-{%- assign s = site.data.services -%}
+{%- comment -%}
+  Services page (/services/). Words only used here are in _data/services/page.yml; the kicker,
+  intro and "How I work" come from _data/shared/ so they sit next to the Profile versions.
+{%- endcomment -%}
+{%- assign s = site.data.services.page -%}
+{%- assign me = site.data.shared.about_me.services -%}
 
 {% include services-hero.html %}
 
@@ -20,17 +25,12 @@ layout: default
 </section>
 
 <section class="wrap sv-section sv-about" aria-label="About me">
-  <p class="hero-kicker">{{ s.kicker }}</p>
-  <p class="sv-intro">{{ s.intro }}</p>
+  <p class="hero-kicker">{{ me.kicker }}</p>
+  <p class="sv-intro">{{ me.intro }}</p>
 </section>
 
 <section class="wrap sv-section" aria-labelledby="work-heading">
-  <h2 id="work-heading">{{ s.how_i_work.heading }}</h2>
-  <ul class="work-lines">
-    {%- for item in s.how_i_work.items %}
-    <li><strong>{{ item.lead }}</strong> {{ item.text }}</li>
-    {%- endfor %}
-  </ul>
+  {% include sections/how-i-work-lines.html data=site.data.shared.how_i_work.services id="work-heading" %}
 </section>
 
 <section class="wrap sv-section sv-section-wide" aria-labelledby="offers-heading">
@@ -114,7 +114,6 @@ layout: default
     </article>
     {%- endfor %}
   </div>
-  <a class="more-link" href="{{ '/employment' | relative_url }}">{{ s.selected_work.link_text }} <span aria-hidden="true">→</span></a>
 </section>
 
 <section class="wrap sv-section" id="contact" aria-labelledby="contact-heading">

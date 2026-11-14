@@ -1,0 +1,16 @@
+{%- comment -%}
+  "How I work" as a whiteboard with the You / Me / Your tech diagram.
+  Usage: {% include sections/how-i-work-board.html data=site.data.shared.how_i_work.profile_home %}
+{%- endcomment -%}
+{%- assign d = include.data -%}
+<div class="board">
+  <div class="board-head">
+    <div>
+      <p class="eyebrow">{{ d.eyebrow }}</p>
+      <h2{% if include.id %} id="{{ include.id }}"{% endif %}>{{ d.heading }}</h2>
+    </div>
+    <p class="hand board-aside">{{ d.aside }}</p>
+  </div>
+  {% include sections/how-i-work-diagram.html labels=d.diagram %}
+  <p class="board-text">{{ d.text }}</p>
+</div>

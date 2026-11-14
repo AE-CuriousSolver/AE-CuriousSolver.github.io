@@ -1,0 +1,23 @@
+{%- comment -%}
+  "What I'm good at: Skills, sketched" on a whiteboard. Hover a card to read more.
+  Usage: {% include sections/skills.html data=site.data.shared.skills %}
+{%- endcomment -%}
+{%- assign d = include.data -%}
+<div class="board">
+  <div class="board-head">
+    <div>
+      <p class="eyebrow">{{ d.eyebrow }}</p>
+      <h2{% if include.id %} id="{{ include.id }}"{% endif %}>{{ d.heading }}</h2>
+    </div>
+    <p class="hand board-aside skills-hint" aria-hidden="true">{{ d.hint }}</p>
+  </div>
+  <div class="skills">
+    {%- for skill in d.items %}
+    <article class="skill" tabindex="0">
+      {% include skill-sketch.html name=skill.sketch %}
+      <h3>{{ skill.title }}</h3>
+      <p>{{ skill.text }}</p>
+    </article>
+    {%- endfor %}
+  </div>
+</div>

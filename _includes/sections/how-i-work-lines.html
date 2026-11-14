@@ -1,0 +1,12 @@
+{%- comment -%}
+  "How I work" as short lines: bold title, then the text.
+  Works with any version that has items with title + text.
+  Usage: {% include sections/how-i-work-lines.html data=site.data.shared.how_i_work.services id="work-heading" %}
+{%- endcomment -%}
+{%- assign d = include.data -%}
+<h2 id="{{ include.id }}">{{ d.heading }}</h2>
+<ul class="work-lines">
+  {%- for item in d.items %}
+  <li><strong>{{ item.title }}</strong> {{ item.text }}</li>
+  {%- endfor %}
+</ul>

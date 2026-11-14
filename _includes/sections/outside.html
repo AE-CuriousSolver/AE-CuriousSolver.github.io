@@ -1,0 +1,14 @@
+{%- comment -%}
+  Outside of tech: heading, handwritten note and paragraphs.
+  Usage: {% include sections/outside.html data=site.data.shared.outside id="about-outside" %}
+{%- endcomment -%}
+{%- assign d = include.data -%}
+<div class="outside-head">
+  <h2 id="{{ include.id }}">{{ d.heading }}</h2>
+  <p class="hand outside-note" aria-hidden="true">{{ d.note }}</p>
+</div>
+<div class="prose">
+  {%- for paragraph in d.paragraphs %}
+  <p>{{ paragraph }}</p>
+  {%- endfor %}
+</div>

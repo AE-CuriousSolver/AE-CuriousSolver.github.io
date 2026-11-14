@@ -1,0 +1,48 @@
+# Who I am and what I do: every version, side by side, so they are easy to compare.
+# profile_home  = the Profile homepage intro (top of /profile/)
+# profile_about = the About page intro line and "About me" (/profile/about)
+# services      = the kicker and paragraph on the Services page (/services/)
+
+profile_home:
+  kicker: "Product Engineer & Technical Advisor | Architecture · Data · APIs | Backend engineering"
+  heading: "Hi, I'm Anna-Marie."
+  text: >-
+    I trained as a mechanical engineer, then spent almost four years building backend
+    systems at Lloyds and Starling. Now I help people understand how their
+    technology fits together, from what a product captures to what its users
+    actually see. This page is the detail behind my CV: where I've worked, how
+    I work and what I'm building.
+
+profile_about:
+  intro: "The person behind the CV: how I think, the tools I use and what I get up to outside tech."
+
+  summary:
+    heading: "About me"
+    paragraphs:
+      - >-
+        I'm an inventor at heart. When something is confusing or clunky, I can't
+        help designing something clearer. I think in systems, and I translate: I
+        work out how technology really works and how people really use it, then make
+        it make sense to the people who depend on it.
+      - >-
+        I trained as a mechanical engineer, then spent almost four years as a
+        software engineer at Lloyds and Starling, on fraud systems and
+        Banking-as-a-Service APIs. I learned that the code was only part of what I
+        care about. The other part is the people: their behaviour, their experience
+        and how they actually use a system.
+      - >-
+        So I spent three years in New Zealand in people-focused roles, from tourism
+        operations to facilitation, and found I kept improving the systems around
+        me. Now I bring both together, working with startups on how their
+        technology, data and people fit.
+
+services:
+  # Shown after "How I can help"
+  kicker: "Anna-Marie Edeleanu · Product Engineer & Technical Advisor"
+
+  intro: >-
+    I spent almost four years as a backend engineer at Starling and Lloyds. Now I
+    sit between the vision and the build. I listen to the complexity: your goals,
+    constraints, conflicts and possibilities. I capture the objective, and turn
+    what's abstract into an explicit, buildable plan. One person from discovery to
+    build, so nothing gets lost in translation.

@@ -1,0 +1,21 @@
+{%- comment -%}
+  "About me": photo on the left, paragraphs on the right.
+  Usage: {% include sections/about-me.html data=site.data.shared.about_me.profile_about.summary id="about-summary" %}
+  Leave out photo=false to show the photo.
+{%- endcomment -%}
+{%- assign d = include.data -%}
+<div class="about-intro">
+  {%- unless include.photo == false %}
+  <div class="portrait about-portrait">
+    <div class="portrait-photo">
+      <img src="{{ '/assets/images/profile-640.jpg' | relative_url }}" alt="{{ site.author }}" width="640" height="640">
+    </div>
+  </div>
+  {%- endunless %}
+  <div class="about-summary prose">
+    <h2 id="{{ include.id }}">{{ d.heading }}</h2>
+    {%- for paragraph in d.paragraphs %}
+    <p>{{ paragraph }}</p>
+    {%- endfor %}
+  </div>
+</div>

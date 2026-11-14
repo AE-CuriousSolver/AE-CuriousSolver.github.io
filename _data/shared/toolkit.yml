@@ -1,0 +1,18 @@
+# Toolkit. Shown on /profile/about (_includes/sections/toolkit.html).
+
+heading: "Toolkit"
+groups:
+  - label: "Languages and frameworks"
+    items: ["Java", "Spring", "Guice", "Python", "TypeScript", "JavaScript", "React", "Next.js", "Tailwind CSS"]
+  - label: "APIs and testing"
+    items: ["REST", "OpenAPI / Swagger", "Webhooks", "JUnit", "Mockito", "Contract testing", "Vitest"]
+  - label: "Data and cloud"
+    items: ["SQL", "PostgreSQL", "AWS", "Supabase", "Vercel"]
+  - label: "Build and run"
+    items: ["Docker", "Kubernetes", "Jenkins", "Maven", "Gradle", "Grafana", "Prometheus", "Sentry", "Instana", "Humio"]
+  - label: "Diagramming"
+    items: ["Miro", "Lucidchart", "draw.io", "FigJam"]
+  - label: "Design and collaboration"
+    items: ["Figma", "Notion", "Confluence", "Jira", "Attio", "GitHub", "Agile"]
+  - label: "AI tools"
+    items: ["Claude Code", "Cursor", "Claude", "ChatGPT", "GitHub Copilot", "Gemini API"]
