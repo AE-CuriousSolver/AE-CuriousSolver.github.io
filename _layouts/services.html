@@ -237,6 +237,9 @@ layout: services-shell
           action="{% if site.intro_form_endpoint != "" %}{{ site.intro_form_endpoint }}{% else %}mailto:{{ site.email }}{% endif %}"
           method="post" data-email="{{ site.email }}" data-subject="{{ f.email_subject }}" data-sent="{{ f.sent }}"
           {% if site.intro_form_endpoint == "" %}data-mailto{% endif %}>
+      <input type="hidden" name="_subject" value="{{ f.email_subject }}">
+      {%- comment -%} Spam trap: hidden from people, bots fill it in and get ignored {%- endcomment %}
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="sv-form-trap">
       <div class="sv-form-row">
         <label>{{ f.name }}<input name="name" autocomplete="name" required></label>
         <label>{{ f.email }}<input name="email" type="email" autocomplete="email" required></label>

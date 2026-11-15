@@ -19,7 +19,7 @@ github_url: "https://github.com/AE-CuriousSolver"
 # Services intro-call form: where it sends. Leave empty to open a pre-filled email instead.
 # To receive submissions directly, create a free form at formspree.io and paste its address here,
 # e.g. "https://formspree.io/f/abcdwxyz".
-intro_form_endpoint: ""
+intro_form_endpoint: "https://formspree.io/f/moedelvd"
 cv_file: "/profile/assets/files/Anna-Marie-Edeleanu-CV.pdf"
 
 # Theme (layouts are all overridden; kept so GitHub Pages does not fall back to its default theme)
