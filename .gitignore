@@ -13,3 +13,6 @@ node_modules/
 .claude/
 vendor/
 .bundle/
+
+# Local-only planning and style tests (never committed: the repo is public)
+lab/

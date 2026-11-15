@@ -1,27 +1,56 @@
 # Services page (/services/): words only used here. Layout: _layouts/services.html.
+#
+# Text styling you can use in headings and short lines on this page:
+#   ==words==   highlighter behind the words (for big titles)
+#   ~~words~~   hand-drawn underline under the words (for small titles and descriptions)
 # The kicker and intro paragraph are in _data/shared/about_me.yml; "How I work" in
 # _data/shared/how_i_work.yml.
 
 hero:
-  title: "Someone on your side"
-  question: "Know what you want to build, but not how to get there?"
-  answer: "From abstract ideas to buildable products"
-  # Bubbles drift around at the top of the page, then come together into the blueprint as you scroll.
-  # The first four (founders' frictions) are scattered on the first screen; the rest appear as you scroll.
-  # Keep it to eight: positions are set in assets/js/services-hero.js and _includes/services-hero.html.
-  bubbles:
-    - { label: "deadlines" }
-    - { label: "budget" }
-    - { label: "features" }
-    - { label: "tech" }
-    - { label: "vision" }
-    - { label: "team" }
-    - { label: "customers" }
-    - { label: "data" }
-  centre: "blueprint"
+  title: "Someone on your side."
+  # The question sits in the middle of the messy bubbles; the answer lands once they've settled.
+  # ~~words~~ get a hand-drawn underline, ==words== a highlighter, drawn in after the text appears.
+  question: "Know what you want to build, but not ~~how to get there~~?"
+  answer: "You don't need all the answers. ==That's my job.=="
 
+  # The worries and responsibilities, messy at first, then grouped and connected around the centre.
+  #   kind:  founder (blue) · tech (orange) · other (neutral)
+  #   lines: optional, to split a long label over two lines
+  # Positions and connections are in assets/js/services-hero.js (SETTINGS), by label. The easiest way
+  # to change them: open the page with ?arrange and drag / click, then copy what the panel gives you.
+  bubbles:
+    - { label: "product vision", kind: founder, lines: ["product", "vision"] }
+    - { label: "budget", kind: founder }
+    - { label: "deadlines", kind: founder }
+    - { label: "team work", kind: founder }
+    - { label: "technology", kind: tech }
+    - { label: "data", kind: tech }
+    - { label: "security & protection", kind: tech, lines: ["security &", "protection"] }
+    - { label: "system maintenance", kind: tech, lines: ["system", "maintenance"] }
+    - { label: "features", kind: other }
+    - { label: "user experience", kind: other, lines: ["user", "experience"] }
+
+  # The noise: there at the start, then drifts off the sides as you scroll.
+  noise:
+    - { label: "technical jargon", lines: ["technical", "jargon"] }
+    - { label: "misaligned development", lines: ["misaligned", "development"] }
+    - { label: "bulldozing tech talks", lines: ["bulldozing", "tech talks"] }
+    - { label: "lingering discussions", lines: ["lingering", "discussions"] }
+
+  # What you leave with: these appear near the end, linked to the centre.
+  outcomes:
+    - { label: "source of truth", lines: ["source", "of truth"] }
+    - { label: "actionable direction", lines: ["actionable", "direction"] }
+    - { label: "lead with confidence", lines: ["lead with", "confidence"] }
+    - { label: "aware and prepared", lines: ["aware and", "prepared"] }
+
+  # The shape everything comes together in: what I hand back.
+  centre: "one clear guide"
+  centre_sub: "what, how & why"
+
+# The ways I help. Not a section of their own any more: each one sits inside the offer it
+# belongs to (see "helps" under each offer below), behind "What you get".
 help:
-  heading: "How I can help"
   items:
     - title: "Independent review of your tech"
       text: "know what you've really got, what's missing and what's at risk."
@@ -34,12 +63,26 @@ help:
     - title: "Build prototypes"
       text: "get something real in front of users, fast."
 
+# The tagline gets its own screen after the answer: messy handwriting and a scribble on one side,
+# crisp type and neatly stacked blocks on the other. ==words== get the highlighter.
+tagline:
+  from: "From abstract ideas"
+  to: "to ==buildable products=="
+
+# How it works: three steps, with the You / Me / Your tech diagram. The step titles and text come
+# from the Services version of "How I work" in _data/shared/how_i_work.yml (first three items);
+# the fourth item there (Remote-first) shows as a small note underneath.
+how:
+  heading: "How it ==works=="
+
 services:
-  heading: "Services"
+  heading: "Ways I can ==help=="
   note: "Prices depend on complexity and team size"
+  details: "What you get"
   items:
     - name: "Product & Engineering Health Check"
       id: "health-check"
+      helps: ["Independent review of your tech", "Find the time and money wasters"]
       price: "From A$2,000"
       duration: "1–2 weeks"
       good_for: "Good for: you've started building and want to know where you really stand."
@@ -56,6 +99,7 @@ services:
         - "A build plan: the order of work and the skills needed"
     - name: "Product Definition Sprint"
       id: "sprint"
+      helps: ["Define your product vision"]
       price: "From A$4,000"
       duration: "2–3 weeks"
       good_for: "Good for: the idea's clear in your head, but not yet on paper in a way a team can build."
@@ -72,8 +116,9 @@ services:
         - "Prioritised requirements and MVP scope"
     - name: "Fractional Product Partner"
       id: "partner"
+      helps: ["Advise on engineering strategy", "Build prototypes"]
       price: "From A$2,000/month"
-      duration: "around 2 days (16 hours)"
+      duration: "around 16 hours"
       good_for: "Good for: you want someone on your side through the build."
       text: >-
         Part-time, ongoing support: checking delivery against the blueprint, a
@@ -98,7 +143,6 @@ start:
     title: "Let's figure it out together"
     then: "book a free 30-minute intro call"
     target: "contact"
-  after: "Tell me about your ideas, the friction and what you're looking for, and we'll go from there."
 
 # Each piece of work is a card; "steps" are shown in order, one per line.
 selected_work:
@@ -115,6 +159,36 @@ selected_work:
         - "The fraud team kept requesting one-off rules for each new scam."
         - "I asked them to walk me through their investigations instead, then redesigned the rules engine so investigators could create and adjust rules themselves, with no engineers or releases needed."
 
+# Who you'd be working with: photo, one line of proof, and a button that opens a pop-up with the
+# intro paragraph (_data/shared/about_me.yml) and the selected work above. DRAFT wording.
+know_me:
+  heading: "Who you'd be working with"
+  proof: "At Starling Bank I redesigned the fraud rules engine, so rule changes went from around two weeks to instant, with no engineers needed."
+  button: "Get to know me"
+
+# The one call to action, repeated: under the answer, on the flow chart and here.
+# Left: what the call is like. Right: a short form; I get back to them (no automatic bookings).
+# Where the form sends to is set in _config.yml (intro_form_endpoint). DRAFT wording.
 contact:
   heading: "Let's talk"
-  button: "Message me on LinkedIn"
+  text: "A free 30-minute intro call. No prep needed."
+  call_heading: "What happens on the call"
+  call_points:
+    - "You tell me about your ideas, the friction and what you're looking for."
+    - "I ask questions and sketch out what I'm hearing, so we're looking at the same picture."
+    - "You leave with a clearer view and a suggested next step, whether or not that's working with me."
+  button: "Request a free intro call"
+  form:
+    name: "Your name"
+    email: "Email"
+    company: "Company or product"
+    website: "Website (if you have one)"
+    interest: "Interested in"
+    interest_options: ["Not sure yet", "Product & Engineering Health Check", "Product Definition Sprint", "Fractional Product Partner"]
+    friction: "What's causing friction right now?"
+    timing: "When suits you best for a call?"
+    timing_options: ["Flexible", "Mornings", "Afternoons", "Evenings"]
+    send: "Send"
+    sent: "Thanks! I'll be in touch soon to find a time."
+    email_subject: "Intro call request"
+  linkedin: "Or message me on LinkedIn"

@@ -31,6 +31,40 @@
     });
   });
 
+  // A link inside a pop-up (e.g. "Request a free intro call") closes the pop-up before jumping.
+  document.querySelectorAll('[data-close-dialog]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      var dialog = link.closest('dialog');
+      if (dialog) dialog.close();
+    });
+  });
+
+  // Intro-call form (Services). With a form service address it sends there quietly; without one it
+  // opens a pre-filled email, so nothing is lost either way.
+  document.querySelectorAll('[data-intro-form]').forEach(function (form) {
+    var sent = form.querySelector('.sv-form-sent');
+    function done() { if (sent) sent.hidden = false; form.reset(); }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = new FormData(form);
+      if (form.hasAttribute('data-mailto')) {
+        var lines = [];
+        form.querySelectorAll('label').forEach(function (label) {
+          var field = label.querySelector('input, select, textarea');
+          if (field && field.value) lines.push(label.firstChild.textContent.trim() + ': ' + field.value);
+        });
+        location.href = 'mailto:' + form.getAttribute('data-email') +
+          '?subject=' + encodeURIComponent(form.getAttribute('data-subject')) +
+          '&body=' + encodeURIComponent(lines.join('\n\n'));
+        done();
+        return;
+      }
+      fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
+        .then(function (r) { if (r.ok) done(); else form.submit(); })
+        .catch(function () { form.submit(); });
+    });
+  });
+
   // Mark which section of the page you're in: the last one whose top has passed under the links.
   var jumpLinks = Array.prototype.slice.call(document.querySelectorAll('.jump-links a'));
   if (jumpLinks.length) {

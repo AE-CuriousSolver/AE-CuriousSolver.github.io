@@ -1,0 +1,18 @@
+{%- comment -%}
+  Turns styling markers in a short line of copy into styles:
+    ==words==  highlighter behind the words (big titles)
+    ~~words~~  hand-drawn underline under the words (small titles, descriptions)
+  Usage: {% include fancy-text.html text=s.help.heading %}
+{%- endcomment -%}
+{%- assign parts = include.text | split: "==" -%}
+{%- capture marked -%}
+{%- for part in parts -%}
+{%- assign odd = forloop.index0 | modulo: 2 -%}
+{%- if odd == 1 -%}<mark class="hl">{{ part }}</mark>{%- else -%}{{ part }}{%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- assign parts = marked | split: "~~" -%}
+{%- for part in parts -%}
+{%- assign odd = forloop.index0 | modulo: 2 -%}
+{%- if odd == 1 -%}<span class="scribble">{{ part }}<svg class="drawable" viewBox="0 0 200 22" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="sk" d="M4 14 C50 4 120 4 196 12 M30 19 C80 13 140 13 180 18" stroke="#EB6446" stroke-width="3" style="--len:420"/></svg></span>{%- else -%}{{ part }}{%- endif -%}
+{%- endfor -%}

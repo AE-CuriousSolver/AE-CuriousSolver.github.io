@@ -2,19 +2,9 @@
 layout: base
 ---
 {%- comment -%}
-  Services shell (/services/): just my name and a "Let's talk" button; footer with email and
-  LinkedIn only. No menu, CV or GitHub, and nothing links to the Profile pages.
+  Services shell (/services/): no top banner at all; footer with email and LinkedIn only.
+  No menu, CV or GitHub, and nothing links to the Profile pages.
 {%- endcomment -%}
-  <header class="site-nav services-nav">
-    <div class="wrap">
-      <a class="brand" href="{{ '/services/' | relative_url }}">
-        <span class="brand-dot" aria-hidden="true"></span>
-        <span>Anna-Marie<span class="brand-surname"> Edeleanu</span></span>
-      </a>
-      <a class="btn btn-small" href="#contact">{{ site.data.services.page.contact.heading }}</a>
-    </div>
-  </header>
-
   <main id="main" class="site-main">
     {{ content }}
   </main>

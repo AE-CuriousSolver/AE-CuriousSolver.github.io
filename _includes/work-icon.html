@@ -15,5 +15,28 @@
 {%- when "honest" %}
   <path class="sk" d="M24 6 V40 M15 42 H33 M8 13 H40" stroke="#1B2740" stroke-width="2.5" style="--len:100"/>
   <path class="sk" d="M8 13 L3 26 H13 Z M40 13 L35 26 H45 Z" stroke="#127C80" stroke-width="2.5" style="--len:90;--d:.5s"/>
+{%- when "remote" or "remote-call" %}
+  <rect class="sk" x="8" y="9" width="32" height="23" rx="3" stroke="#1B2740" stroke-width="2.5" style="--len:120"/>
+  <path class="sk" d="M3 37 H45 M8 32 L4 37 M40 32 L44 37" stroke="#1B2740" stroke-width="2.5" style="--len:70;--d:.3s"/>
+  <circle class="sk" cx="24" cy="18" r="4.5" stroke="#EB6446" stroke-width="2.5" style="--len:30;--d:.6s"/>
+  <path class="sk" d="M16 30 Q24 22 32 30" stroke="#EB6446" stroke-width="2.5" style="--len:30;--d:.8s"/>
+{%- when "remote-link" %}
+  <rect class="sk" x="2" y="11" width="16" height="13" rx="2" stroke="#1B2740" stroke-width="2.5" style="--len:60"/>
+  <rect class="sk" x="30" y="11" width="16" height="13" rx="2" stroke="#1B2740" stroke-width="2.5" style="--len:60;--d:.2s"/>
+  <path class="sk" d="M10 24 V29 M5 30 H15 M38 24 V29 M33 30 H43" stroke="#1B2740" stroke-width="2.5" style="--len:40;--d:.4s"/>
+  <g class="lbl" fill="#EB6446" style="--d:.7s"><circle cx="21" cy="17.5" r="1.8"/><circle cx="24" cy="17.5" r="1.8"/><circle cx="27" cy="17.5" r="1.8"/></g>
+{%- when "remote-home" %}
+  <path class="sk" d="M5 24 L24 7 L43 24 M10 20 V41 H38 V20" stroke="#1B2740" stroke-width="2.5" style="--len:150"/>
+  <rect class="sk" x="17" y="25" width="14" height="9" rx="1.5" stroke="#127C80" stroke-width="2.5" style="--len:50;--d:.5s"/>
+  <path class="sk" d="M14 37 H34" stroke="#127C80" stroke-width="2.5" style="--len:20;--d:.7s"/>
+{%- when "remote-board" %}
+  <rect class="sk" x="6" y="7" width="36" height="26" rx="3" stroke="#1B2740" stroke-width="2.5" style="--len:130"/>
+  <path class="sk" d="M2 38 H46 M6 33 L2 38 M42 33 L46 38" stroke="#1B2740" stroke-width="2.5" style="--len:70;--d:.3s"/>
+  <g class="lbl" style="--d:.6s"><rect x="11" y="12" width="9" height="8" rx="1" fill="#FBE3B6"/><rect x="23" y="12" width="9" height="8" rx="1" fill="#FCE9E3"/><rect x="17" y="22" width="9" height="7" rx="1" fill="#E3F1F0"/></g>
+  <path class="sk" d="M20 16 H23 M26 20 L22 22" stroke="#EB6446" stroke-width="1.8" style="--len:12;--d:.9s"/>
+{%- when "remote-globe" %}
+  <circle class="sk" cx="22" cy="24" r="16" stroke="#1B2740" stroke-width="2.5" style="--len:110"/>
+  <path class="sk" d="M6 24 H38 M22 8 C14 16 14 32 22 40 M22 8 C30 16 30 32 22 40" stroke="#127C80" stroke-width="2" style="--len:150;--d:.3s"/>
+  <path class="sk" d="M38 6 C33 6 31 10 33 14 L38 21 L43 14 C45 10 43 6 38 6 Z" stroke="#EB6446" stroke-width="2.5" style="--len:50;--d:.7s"/>
 {%- endcase %}
 </svg>

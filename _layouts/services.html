@@ -2,47 +2,112 @@
 layout: services-shell
 ---
 {%- comment -%}
-  Services page (/services/). Words only used here are in _data/services/page.yml; the kicker,
-  intro and "How I work" come from _data/shared/ so they sit next to the Profile versions.
+  Services page (/services/). The page's one job: turn a warm visitor into a free intro call.
+  Order (see the plan in lab/plan): hero (landing → diagram → answer) → bridge → how it works
+  → ways I can help (offers, detail behind "What you get") → not sure where to start?
+  → who you'd be working with (pop-up for the rest) → let's talk.
+  Words only used here: _data/services/page.yml. Shared words (intro, how I work, skills): _data/shared/.
+  ==words== and ~~words~~ in the copy become a highlighter and a hand-drawn underline.
 {%- endcomment -%}
 {%- assign s = site.data.services.page -%}
 {%- assign me = site.data.shared.about_me.services -%}
+{%- assign translate = site.data.shared.how_i_work.profile_home -%}
+{%- assign work = site.data.shared.how_i_work.services -%}
+{%- assign skills = site.data.shared.skills -%}
 
 {% include services-hero.html %}
 
-<section class="wrap sv-section sv-section-first" aria-labelledby="help-heading">
-  <div class="board sv-help">
-    <h2 id="help-heading">{{ s.help.heading }}</h2>
-    <div class="help-grid">
-      {%- for item in s.help.items %}
-      <article class="help-tile">
-        <h3>{{ item.title }}</h3>
-        <p>{{ item.text }}</p>
-      </article>
-      {%- endfor %}
+<section class="sv-tagline drawable" aria-label="{{ s.tagline.from }} {{ s.tagline.to | remove: '==' }}">
+  <div class="wrap">
+  <div class="board sv-tagline-inner">
+    <div class="sv-tagline-from">
+      <p class="hand">{{ s.tagline.from }}</p>
+      <svg viewBox="0 0 220 120" aria-hidden="true" focusable="false">
+        <!-- a cloud-like splat; a teal line that loops out of it and trips into a knot at the edge,
+             then trails off to a dot; a short coral loop joining a dot to the cloud; a few loose dots -->
+        <path class="sk" d="M78 40 C86 24 104 32 106 44 C120 36 134 50 124 62 C138 72 122 92 106 84 C100 100 76 98 74 84 C58 92 48 74 60 64 C46 54 60 36 78 40 Z" stroke="#7D879D" stroke-width="2.5" style="--len:420"/>
+        <path class="sk" d="M86 64 C78 52 100 46 100 58 C100 70 114 72 120 62 C126 52 138 52 136 62 C134 72 146 76 150 66 C154 56 140 50 138 60 C136 70 152 74 158 64 C166 50 178 72 188 56 C192 48 195 43 197 40" stroke="#127C80" stroke-width="2.5" style="--len:380;--d:.4s"/>
+        <path class="sk" d="M27 95 C18 78 44 74 40 88 C36 102 58 94 60 76" stroke="#EB6446" stroke-width="2.5" style="--len:140;--d:.8s"/>
+        <g class="lbl" fill="#1B2740" style="--d:1.1s"><circle cx="27" cy="97" r="3.2"/><circle cx="199" cy="38" r="3.2"/><circle cx="64" cy="16" r="2.6"/><circle cx="176" cy="98" r="2.8"/></g>
+      </svg>
     </div>
+    <svg class="sv-tagline-arrow" viewBox="0 0 140 60" aria-hidden="true" focusable="false">
+      <path class="sk" d="M6 40 C40 4 90 6 126 30 M112 18 L128 31 L110 40" stroke="#EB6446" stroke-width="3" style="--len:220;--d:1s"/>
+    </svg>
+    <div class="sv-tagline-to">
+      <p>{% include fancy-text.html text=s.tagline.to %}</p>
+      <svg viewBox="0 0 220 120" aria-hidden="true" focusable="false">
+        <rect class="sk" x="35" y="82" width="46" height="28" rx="4" stroke="#1B2740" stroke-width="2.5" style="--len:150;--d:1.3s"/>
+        <rect class="sk" x="87" y="82" width="46" height="28" rx="4" stroke="#1B2740" stroke-width="2.5" style="--len:150;--d:1.45s"/>
+        <rect class="sk" x="139" y="82" width="46" height="28" rx="4" stroke="#1B2740" stroke-width="2.5" style="--len:150;--d:1.6s"/>
+        <rect class="sk" x="61" y="48" width="46" height="28" rx="4" stroke="#127C80" stroke-width="2.5" style="--len:150;--d:1.8s"/>
+        <rect class="sk" x="113" y="48" width="46" height="28" rx="4" stroke="#127C80" stroke-width="2.5" style="--len:150;--d:1.95s"/>
+        <rect class="sk" x="87" y="14" width="46" height="28" rx="4" stroke="#EB6446" stroke-width="2.5" style="--len:150;--d:2.15s"/>
+      </svg>
+    </div>
+  </div>
   </div>
 </section>
 
-<section class="wrap sv-section sv-about" aria-label="About me">
-  <p class="hero-kicker">{{ me.kicker }}</p>
-  <p class="sv-intro">{{ me.intro }}</p>
-</section>
-
-<section class="wrap sv-section" aria-labelledby="work-heading">
-  {% include sections/how-i-work-lines.html data=site.data.shared.how_i_work.services id="work-heading" %}
+<section class="wrap sv-section sv-how" aria-labelledby="how-heading">
+  <h2 id="how-heading" class="sv-big">{% include fancy-text.html text=s.how.heading %}</h2>
+  <div class="sv-how-picture">
+    {% include sections/how-i-work-diagram.html labels=translate.diagram %}
+  </div>
+  <div class="sv-how-body">
+    <ol class="sv-steps">
+      {%- for item in work.items limit: 3 %}
+      <li>
+        <span class="sv-step-num" aria-hidden="true">{{ forloop.index }}</span>
+        <div>
+          <h3>{{ item.title | remove: "." }}</h3>
+          <p>{{ item.text }}</p>
+        </div>
+      </li>
+      {%- endfor %}
+    </ol>
+    {%- for item in work.items offset: 3 %}
+    <aside class="sv-together">
+      <div class="sv-together-head">
+        {% include work-icon.html name="remote" %}
+        <h3>{{ item.title | remove: "." }}</h3>
+      </div>
+      <p>{{ item.text }}</p>
+    </aside>
+    {%- endfor %}
+  </div>
 </section>
 
 <section class="wrap sv-section sv-section-wide" aria-labelledby="offers-heading">
-  <h2 id="offers-heading">{{ s.services.heading }}</h2>
+  <h2 id="offers-heading" class="sv-big">{% include fancy-text.html text=s.services.heading %}</h2>
   <p class="offer-note">{{ s.services.note }}</p>
   <div class="offer-grid">
     {%- for offer in s.services.items %}
     <article class="card offer" id="{{ offer.id }}">
       <h3>{{ offer.name }}</h3>
+      <p class="offer-good-for">{{ offer.good_for }}</p>
+      <p class="offer-price"><strong>{{ offer.price }}</strong> · {{ offer.duration }}</p>
+      <button type="button" class="offer-open" data-dialog="offer-{{ offer.id }}" aria-haspopup="dialog">{{ s.services.details }}</button>
+    </article>
+    {%- endfor %}
+  </div>
+
+  {%- for offer in s.services.items %}
+  <dialog class="project-dialog offer-dialog" id="offer-{{ offer.id }}" aria-labelledby="offer-{{ offer.id }}-title">
+    <div class="project-dialog-inner">
+      <form method="dialog"><button class="dialog-close" aria-label="Close">×</button></form>
+      <h3 id="offer-{{ offer.id }}-title">{{ offer.name }}</h3>
       <p class="offer-price"><strong>{{ offer.price }}</strong> · {{ offer.duration }}</p>
       <p class="offer-good-for">{{ offer.good_for }}</p>
       <p>{{ offer.text }}</p>
+      {%- if offer.helps %}
+      <ul class="sv-ticks">
+        {%- for title in offer.helps %}
+        {%- assign help = s.help.items | where: "title", title | first %}
+        <li><strong>{{ title }}</strong><span>{{ help.text }}</span></li>
+        {%- endfor %}
+      </ul>
+      {%- endif %}
       {%- if offer.list %}
       <div class="offer-list">
         <p class="offer-list-heading">{{ offer.list_heading }}</p>
@@ -53,76 +118,147 @@ layout: services-shell
         </ul>
       </div>
       {%- endif %}
-    </article>
-    {%- endfor %}
-  </div>
+      <a class="btn btn-solid offer-cta" href="#contact" data-close-dialog>{{ s.contact.button }}</a>
+    </div>
+  </dialog>
+  {%- endfor %}
 </section>
 
 <section class="wrap sv-section" aria-labelledby="start-heading">
   <div class="board sv-start">
-    <div class="flow">
-      <h2 id="start-heading" class="flow-start">{{ s.start.heading }}</h2>
-
-      <div class="flow-alt">
-        <div class="flow-alt-link" aria-hidden="true">
-          <span class="hand">{{ s.start.alt.if }}</span>
-          <svg class="drawable" viewBox="0 0 96 24" focusable="false">
-            <path class="sk" d="M2 12 H86 M77 5 L88 12 L77 19" stroke="#EB6446" stroke-width="2.5" style="--len:120;--d:.4s"/>
-          </svg>
-        </div>
-        <a class="flow-alt-box" href="#{{ s.start.alt.target }}">
+    {%- comment -%}
+      The question at the top; three branches come down. Each: a black line, the situation,
+      an orange arrow, then the card. "Let's figure it out together" gets the photo's coral frame.
+    {%- endcomment %}
+    <h2 id="start-heading" class="flow-start">{{ s.start.heading }}</h2>
+    <svg class="flow-branch drawable" viewBox="0 0 900 80" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <path class="sk" d="M450 0 C450 44 2 30 2 78 M450 0 V78 M450 0 C450 44 898 30 898 78" stroke="#1B2740" stroke-width="2" vector-effect="non-scaling-stroke" style="--len:900"/>
+    </svg>
+    <ol class="flow-steps">
+      {%- for step in s.start.flow %}
+      <li class="flow-step">
+        <p class="flow-if hand">{{ step.if }}</p>
+        <svg class="flow-arrow drawable" viewBox="0 0 24 40" aria-hidden="true" focusable="false">
+          <path class="sk" d="M12 2 Q9 18 12 34 M5 27 L12 36 L19 27" stroke="#EB6446" stroke-width="2.5" style="--len:70;--d:{{ forloop.index0 | times: 0.25 | plus: 0.6 }}s"/>
+        </svg>
+        <a class="flow-then" href="#{{ step.target }}"><span>{{ step.then | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span></a>
+      </li>
+      {%- endfor %}
+      <li class="flow-step is-alt">
+        <p class="flow-if hand">{{ s.start.alt.if }}</p>
+        <svg class="flow-arrow drawable" viewBox="0 0 24 40" aria-hidden="true" focusable="false">
+          <path class="sk" d="M12 2 Q9 18 12 34 M5 27 L12 36 L19 27" stroke="#EB6446" stroke-width="2.5" style="--len:70;--d:1.1s"/>
+        </svg>
+        <a class="flow-then flow-alt-box" href="#{{ s.start.alt.target }}">
           <strong>{{ s.start.alt.title }}</strong>
           <span>{{ s.start.alt.then }}</span>
         </a>
-      </div>
+      </li>
+    </ol>
+  </div>
+</section>
 
-      <div class="flow-main">
-        <svg class="flow-branch drawable" viewBox="0 0 900 80" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-          <path class="sk" d="M450 0 C450 44 2 30 2 78 M450 0 C450 44 898 30 898 78" stroke="#1B2740" stroke-width="2" vector-effect="non-scaling-stroke" style="--len:900"/>
-        </svg>
-        <ol class="flow-steps">
-          {%- for step in s.start.flow %}
-          <li class="flow-step">
-            <p class="flow-if hand">{{ step.if }}</p>
-            <svg class="flow-arrow drawable" viewBox="0 0 24 44" aria-hidden="true" focusable="false">
-              <path class="sk" d="M12 2 Q9 20 12 38 M5 31 L12 40 L19 31" stroke="#EB6446" stroke-width="2.5" style="--len:70;--d:{{ forloop.index0 | times: 0.25 | plus: 0.6 }}s"/>
-            </svg>
-            <a class="flow-then" href="#{{ step.target }}">{{ step.then | markdownify | remove: '<p>' | remove: '</p>' | strip }}</a>
-          </li>
+<section class="wrap sv-section sv-know" aria-labelledby="know-heading">
+  <div class="sv-know-photo">
+    <img src="{{ '/assets/images/profile-640.jpg' | relative_url }}" alt="{{ site.author }}" width="640" height="640">
+  </div>
+  <div class="sv-know-words">
+    <h2 id="know-heading">{{ s.know_me.heading }}</h2>
+    <p class="hero-kicker">{{ site.job_title }}</p>
+    <p class="sv-know-proof">{{ s.know_me.proof }}</p>
+    <button class="btn" type="button" data-dialog="know-me" aria-haspopup="dialog">{{ s.know_me.button }} <span aria-hidden="true">＋</span></button>
+  </div>
+</section>
+
+<dialog class="project-dialog know-dialog" id="know-me" aria-labelledby="know-me-title">
+  <div class="project-dialog-inner know-inner">
+    <form method="dialog"><button class="dialog-close" aria-label="Close">×</button></form>
+    <header class="know-head">
+      <h3 id="know-me-title">Hi, I'm Anna-Marie</h3>
+      <p>{{ site.job_title }}</p>
+    </header>
+    <div class="know-top">
+      <div class="know-photo">
+        <img src="{{ '/assets/images/profile-640.jpg' | relative_url }}" alt="{{ site.author }}" width="640" height="640">
+      </div>
+      <p>{{ me.intro }}</p>
+    </div>
+    <h4>{{ skills.eyebrow }}</h4>
+    <div class="know-skills">
+      {%- for skill in skills.items %}
+      <figure>
+        {% include skill-sketch.html name=skill.sketch %}
+        <figcaption>{{ skill.title }}</figcaption>
+      </figure>
+      {%- endfor %}
+    </div>
+    <h4>{{ s.selected_work.heading }}</h4>
+    <div class="know-cases">
+      {%- for item in s.selected_work.items %}
+      <article class="card case">
+        <div class="case-head">
+          {% include case-icon.html name=item.icon %}
+          <h5>{{ item.lead }}</h5>
+        </div>
+        <ol class="case-steps">
+          {%- for step in item.steps %}
+          <li>{{ step }}</li>
           {%- endfor %}
         </ol>
-      </div>
+      </article>
+      {%- endfor %}
     </div>
-    <p class="flow-after">{{ s.start.after }}</p>
   </div>
-</section>
+</dialog>
 
-<section class="wrap sv-section" aria-labelledby="selected-heading">
-  <h2 id="selected-heading">{{ s.selected_work.heading }}</h2>
-  <div class="case-grid">
-    {%- for item in s.selected_work.items %}
-    <article class="card case">
-      <div class="case-head">
-        {% include case-icon.html name=item.icon %}
-        <h3>{{ item.lead }}</h3>
-      </div>
-      <ol class="case-steps">
-        {%- for step in item.steps %}
-        <li>{{ step }}</li>
-        {%- endfor %}
-      </ol>
-    </article>
-    {%- endfor %}
-  </div>
-</section>
-
+{%- assign f = s.contact.form %}
 <section class="wrap sv-section" id="contact" aria-labelledby="contact-heading">
   <div class="contact services-contact">
-    <h2 id="contact-heading">{{ s.contact.heading }}</h2>
-    <div class="ctas">
-      <a class="btn btn-light" href="{{ site.linkedin_url }}" target="_blank" rel="noopener">{{ s.contact.button }}</a>
+    <div class="sv-call">
+      <h2 id="contact-heading">{{ s.contact.heading }}</h2>
+      <p class="sv-call-lead">{{ s.contact.text }}</p>
+      <h3>{{ s.contact.call_heading }}</h3>
+      <ol class="sv-call-points">
+        {%- for point in s.contact.call_points %}
+        <li>{{ point }}</li>
+        {%- endfor %}
+      </ol>
+      <div class="sv-call-other">
+        <a class="btn btn-coral" href="{{ site.linkedin_url }}" target="_blank" rel="noopener">{{ s.contact.linkedin }}</a>
+        <a class="sv-call-email" href="mailto:{{ site.email }}">{{ site.email }}</a>
+      </div>
     </div>
-    <p class="services-contact-links"><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+
+    {%- comment -%}
+      The intro-call form. With intro_form_endpoint set in _config.yml it sends there (e.g. Formspree);
+      without it, pressing Send opens a pre-filled email to me instead (assets/js/site.js).
+    {%- endcomment %}
+    <form class="sv-form" data-intro-form
+          action="{% if site.intro_form_endpoint != "" %}{{ site.intro_form_endpoint }}{% else %}mailto:{{ site.email }}{% endif %}"
+          method="post" data-email="{{ site.email }}" data-subject="{{ f.email_subject }}" data-sent="{{ f.sent }}"
+          {% if site.intro_form_endpoint == "" %}data-mailto{% endif %}>
+      <div class="sv-form-row">
+        <label>{{ f.name }}<input name="name" autocomplete="name" required></label>
+        <label>{{ f.email }}<input name="email" type="email" autocomplete="email" required></label>
+      </div>
+      <div class="sv-form-row">
+        <label>{{ f.company }}<input name="company" autocomplete="organization"></label>
+        <label>{{ f.website }}<input name="website" type="url" inputmode="url" placeholder="https://"></label>
+      </div>
+      <label>{{ f.interest }}
+        <select name="interest">
+          {%- for o in f.interest_options %}<option>{{ o }}</option>{% endfor %}
+        </select>
+      </label>
+      <label>{{ f.friction }}<textarea name="friction" rows="4"></textarea></label>
+      <label>{{ f.timing }}
+        <select name="timing">
+          {%- for o in f.timing_options %}<option>{{ o }}</option>{% endfor %}
+        </select>
+      </label>
+      <button class="btn btn-solid-light" type="submit">{{ s.contact.button }}</button>
+      <p class="sv-form-sent" role="status" hidden>{{ f.sent }}</p>
+    </form>
   </div>
 </section>
 

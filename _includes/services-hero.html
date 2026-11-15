@@ -1,58 +1,76 @@
 {%- comment -%}
-  Services hero: the first screen shows the title and question on the left with loose ideas
-  drifting around them. Scrolling down the page, more bubbles appear and they all come together
-  into one blueprint, with the answer on the right (assets/js/services-hero.js).
-  Without JavaScript it simply shows the finished picture, using the positions below.
+  Services hero, three screens:
+  1. Landing: "Someone on your side" alone in the middle. A short pause (or the first scroll) glides on.
+  2. Diagram: the question in the middle of the messy worries. The screen holds while you scroll and
+     the picture follows your scrolling (back and forth): the noise leaves as what you leave with comes
+     in, the worries settle and connect, the question gives way to the blueprint, all arriving together.
+     The last stretch is a pause on the finished diagram.
+  3. Answer: "From abstract ideas to buildable products" on its own, fading up as you scroll to it.
+  To rearrange the bubbles: open the page with ?arrange (finished layout) or ?arrange=start (messy layout).
+  Movement, positions and timing: assets/js/services-hero.js. Words: _data/services/page.yml (hero).
+  Without JavaScript the three screens simply show as text.
 {%- endcomment -%}
 {%- assign h = site.data.services.page.hero -%}
-{%- assign xs = "300,610,150,760,160,745,330,590" | split: "," -%}
-{%- assign ys = "95,90,215,215,400,405,490,485" | split: "," -%}
-{%- assign ax = "392,510,340,560,340,560,405,504" | split: "," -%}
-{%- assign ay = "215,215,262,263,332,333,365,365" | split: "," -%}
+
 <section class="sv-hero" data-sv-scroll>
-  <div class="sv-stage wrap">
-    <div class="sv-lead">
-      <h1 class="sv-title">{{ h.title }}</h1>
-      <p class="sv-question">{{ h.question }}</p>
-    </div>
-    <svg class="sv-visual" viewBox="0 0 900 560" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="sv-visual-title">
-      <title id="sv-visual-title">Loose ideas ({% for b in h.bubbles %}{{ b.label }}{% unless forloop.last %}, {% endunless %}{% endfor %}) brought together into one {{ h.centre }}.</title>
+  <script>
+    /* Set up straight away, before anything shows (the rest is in services-hero.js) */
+    document.currentScript.parentNode.classList.add('sv-live');
+    /* Always start at the top (unless the address points at a section), so the landing plays every time */
+    if (!location.hash && !/[?&]arrange/.test(location.search)) {
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      window.scrollTo(0, 0);
+    }
+  </script>
+
+  <div class="sv-landing wrap">
+    <h1 class="sv-title">{{ h.title }}</h1>
+  </div>
+
+  <div class="sv-pin">
+  <div class="sv-stage">
+    <svg class="sv-visual" aria-hidden="true" focusable="false">
       <defs>
-        <!-- Same hand-drawn edge as #rough, but sized to the whole drawing so thin, flat lines aren't clipped -->
+        <!-- Same hand-drawn edge as #rough, sized to the whole drawing so thin, flat lines aren't clipped -->
         <filter id="rough-lines" filterUnits="userSpaceOnUse" x="-500" y="-500" width="4000" height="6000"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="2.4"/></filter>
       </defs>
-      <g class="sv-lines">
-        {%- for b in h.bubbles %}
-        {%- assign i = forloop.index0 %}
-        <path class="sv-line" d="M{{ xs[i] }} {{ ys[i] }} L{{ ax[i] }} {{ ay[i] }}" pathLength="1" stroke="#127C80" stroke-width="2" fill="none" stroke-linecap="round" filter="url(#rough-lines)"/>
-        {%- endfor %}
+      <g class="sv-lines"><!-- connecting lines are drawn by services-hero.js from SETTINGS.links --></g>
+      <g class="sv-blueprint">
+        <rect x="-120" y="-75" width="240" height="150" rx="14" fill="#E3F1F0" stroke="#127C80" stroke-width="2.5" filter="url(#rough)"/>
+        <path d="M-96 -75 V75 M-72 -75 V75 M-48 -75 V75 M-24 -75 V75 M0 -75 V75 M24 -75 V75 M48 -75 V75 M72 -75 V75 M96 -75 V75 M-120 -50 H120 M-120 -25 H120 M-120 0 H120 M-120 25 H120 M-120 50 H120" stroke="#127C80" stroke-opacity=".14" stroke-width="1"/>
+        <text x="0" y="{% if h.centre_sub %}4{% else %}13{% endif %}" text-anchor="middle" style="font-size: 40px; fill: #EB6446">{{ h.centre }}</text>
+        {%- if h.centre_sub %}
+        <text x="0" y="38" text-anchor="middle" style="font-size: 19px; fill: #0B5558">{{ h.centre_sub }}</text>
+        {%- endif %}
       </g>
-      <g class="sv-blueprint" transform="translate(450 290)">
-        <rect x="-110" y="-75" width="220" height="150" rx="14" fill="#E3F1F0" stroke="#127C80" stroke-width="2.5" filter="url(#rough)"/>
-        <g class="sv-blueprint-detail">
-          <path d="M-88 -75 V75 M-66 -75 V75 M-44 -75 V75 M-22 -75 V75 M0 -75 V75 M22 -75 V75 M44 -75 V75 M66 -75 V75 M88 -75 V75 M-110 -50 H110 M-110 -25 H110 M-110 0 H110 M-110 25 H110 M-110 50 H110" stroke="#127C80" stroke-opacity=".16" stroke-width="1"/>
-          <text x="0" y="-16" text-anchor="middle" font-size="34" fill="#EB6446">{{ h.centre }}</text>
-          <g fill="#FFFFFF" stroke="#1B2740" stroke-width="2" filter="url(#rough)">
-            <rect x="-84" y="14" width="40" height="28" rx="6"/>
-            <rect x="-20" y="14" width="40" height="28" rx="6"/>
-            <rect x="44" y="14" width="40" height="28" rx="6"/>
-          </g>
-          <path d="M-42 28 H-24 M-29 23 L-23 28 L-29 33 M22 28 H40 M35 23 L41 28 L35 33" stroke="#127C80" stroke-width="2" fill="none" stroke-linecap="round"/>
-        </g>
-      </g>
-      <g class="sv-bubbles">
-        {%- for b in h.bubbles %}
-        {%- assign i = forloop.index0 %}
-        {%- assign tone = i | modulo: 3 %}
-        <g class="sv-bubble" transform="translate({{ xs[i] }} {{ ys[i] }})">
-          <g class="sv-bubble-in">
-            <circle r="42" fill="{% case tone %}{% when 0 %}#FDFCFA{% when 1 %}#FCE9E3{% else %}#E3F1F0{% endcase %}" stroke="{% case tone %}{% when 0 %}#1B2740{% when 1 %}#EB6446{% else %}#127C80{% endcase %}" stroke-width="2.2" filter="url(#rough)"/>
-            <text y="7" text-anchor="middle" font-size="22" fill="#1B2740">{{ b.label }}</text>
+      {%- assign groups = "noise,bubbles,outcomes" | split: "," %}
+      {%- for group in groups %}
+      {%- assign list = h[group] %}
+      <g class="sv-{{ group }}">
+        {%- for b in list %}
+        {%- if group == "noise" %}{% assign kind = "noise" %}{% elsif group == "outcomes" %}{% assign kind = "outcome" %}{% else %}{% assign kind = b.kind | default: "other" %}{% endif %}
+        <g class="sv-oval is-{{ kind }}" data-label="{{ b.label }}" transform="translate(-400 -400)">
+          <g class="sv-oval-in">
+            <ellipse rx="66" ry="34" filter="url(#rough)"/>
+            {%- if b.lines %}
+            <text text-anchor="middle"><tspan x="0" y="-3">{{ b.lines[0] }}</tspan><tspan x="0" y="17">{{ b.lines[1] }}</tspan></text>
+            {%- else %}
+            <text y="7" text-anchor="middle">{{ b.label }}</text>
+            {%- endif %}
           </g>
         </g>
         {%- endfor %}
       </g>
+      {%- endfor %}
     </svg>
-    <p class="sv-answer">{{ h.answer }}</p>
+    <p class="sv-question">{% include fancy-text.html text=h.question %}</p>
+  </div>
+  </div>
+
+  <div class="sv-answer-screen wrap">
+    <div>
+      <p class="sv-answer">{% include fancy-text.html text=h.answer %}</p>
+      <a class="btn sv-answer-cta" href="#contact">{{ site.data.services.page.contact.button }}</a>
+    </div>
   </div>
 </section>
