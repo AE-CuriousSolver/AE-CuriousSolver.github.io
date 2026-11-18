@@ -53,7 +53,7 @@ profile_about:
 services:
   heading: "How I work"
   items:
-    - title: "Listen first."
+    - title: "Listen and understand."
       text: "How things work today, what you need, where the friction is, and where you want to go."
     - title: "Plain English and diagrams."
       text: "So you can lead product and tech decisions with confidence."

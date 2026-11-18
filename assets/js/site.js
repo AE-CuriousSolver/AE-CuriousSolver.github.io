@@ -39,6 +39,17 @@
     });
   });
 
+  // A link to the form can pick what they're interested in (e.g. the Second Opinion banner).
+  document.querySelectorAll('[data-interest]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      var select = document.querySelector('[data-intro-form] select[name="interest"]');
+      if (!select) return;
+      Array.prototype.forEach.call(select.options, function (o) {
+        if (o.text === link.getAttribute('data-interest')) select.value = o.value;
+      });
+    });
+  });
+
   // Intro-call form (Services). With a form service address it sends there quietly; without one it
   // opens a pre-filled email, so nothing is lost either way.
   document.querySelectorAll('[data-intro-form]').forEach(function (form) {

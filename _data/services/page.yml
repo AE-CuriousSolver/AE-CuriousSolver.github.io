@@ -77,8 +77,17 @@ how:
 
 services:
   heading: "Ways I can ==help=="
-  note: "Prices depend on complexity and team size"
+  note: "Prices are in AUD and depend on complexity and team size"
   details: "What you get"
+  # The small first step: a slim banner above the three cards (not a fourth card).
+  # The button goes to the intro-call form (#contact) and picks "Second Opinion" in "Interested in".
+  starter:
+    label: "Start small"
+    name: "Second Opinion"
+    price: "A$400"
+    tagline: "A 30-minute call, then my written notes within 3 working days."
+    text: "Sending something technical out, or got something technical back? Get a second pair of eyes and a sanity check from someone who's been on the other side. Make sure anything from a job description to a data model is solid, or find out what that quote, spec or update really means."
+    button: "Get a second opinion →"
   items:
     - name: "Product & Engineering Health Check"
       id: "health-check"
@@ -127,14 +136,14 @@ services:
         reviews, build work and messages.
 
 # Markdown: **bold** is allowed in these lines
-# Drawn as a small flow chart on a whiteboard. "target" links to an offer card or the contact box.
+# Drawn as a small flow chart on a whiteboard. \n in "if" starts a new line. "target" links to an offer card or the contact box.
 start:
   heading: "Not sure where to start?"
   flow:
-    - if: "If something's already built"
+    - if: "If something's\nalready built"
       then: "start with a **Health Check**"
       target: "health-check"
-    - if: "If the picture isn't clear yet"
+    - if: "If the picture\nisn't clear yet"
       then: "start with a **Sprint**"
       target: "sprint"
   # The "Or" option sits to the side, joined straight to the question
@@ -184,7 +193,7 @@ contact:
     company: "Company or product"
     website: "Website (if you have one)"
     interest: "Interested in"
-    interest_options: ["Not sure yet", "Product & Engineering Health Check", "Product Definition Sprint", "Fractional Product Partner"]
+    interest_options: ["Not sure yet", "Second Opinion", "Product & Engineering Health Check", "Product Definition Sprint", "Fractional Product Partner"]
     friction: "What's causing friction right now?"
     timing: "When suits you best for a call?"
     timing_options: ["Flexible", "Mornings", "Afternoons", "Evenings"]

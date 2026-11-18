@@ -81,6 +81,21 @@ layout: services-shell
 <section class="wrap sv-section sv-section-wide" aria-labelledby="offers-heading">
   <h2 id="offers-heading" class="sv-big">{% include fancy-text.html text=s.services.heading %}</h2>
   <p class="offer-note">{{ s.services.note }}</p>
+  {%- assign st = s.services.starter %}
+  {%- if st %}
+  <aside class="offer-starter" id="second-opinion" aria-labelledby="second-opinion-title">
+    <p class="offer-starter-label">{{ st.label }}</p>
+    <div class="offer-starter-head">
+      <h3 id="second-opinion-title">{{ st.name }}</h3>
+      <p class="offer-starter-price">{{ st.price }}</p>
+    </div>
+    <p class="offer-starter-tagline">{{ st.tagline }}</p>
+    <div class="offer-starter-body">
+      <p class="offer-starter-text">{{ st.text }}</p>
+      <a class="btn btn-solid" href="#contact" data-interest="{{ st.name }}">{{ st.button }}</a>
+    </div>
+  </aside>
+  {%- endif %}
   <div class="offer-grid">
     {%- for offer in s.services.items %}
     <article class="card offer" id="{{ offer.id }}">
@@ -137,7 +152,7 @@ layout: services-shell
     <ol class="flow-steps">
       {%- for step in s.start.flow %}
       <li class="flow-step">
-        <p class="flow-if hand">{{ step.if }}</p>
+        <p class="flow-if hand">{{ step.if | newline_to_br }}</p>
         <svg class="flow-arrow drawable" viewBox="0 0 24 40" aria-hidden="true" focusable="false">
           <path class="sk" d="M12 2 Q9 18 12 34 M5 27 L12 36 L19 27" stroke="#EB6446" stroke-width="2.5" style="--len:70;--d:{{ forloop.index0 | times: 0.25 | plus: 0.6 }}s"/>
         </svg>
